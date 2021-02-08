@@ -7,7 +7,7 @@ import time
 Returns:
     datetime: the current time 
 '''
-def getTime():
+def now():
     JST = timezone(timedelta(hours=+9), 'JST')
     return datetime.fromtimestamp(time.time(), JST)
 
@@ -16,8 +16,8 @@ def getTime():
 Returns:
     date: today
 '''
-def getDate():
-    return getTime().date()
+def today():
+    return now().date()
 
 
 ''' Checking whether the date is future or not
@@ -27,7 +27,7 @@ Returns:
     bool: True / False
 '''
 def isFuture(date: datetime.date):
-    return getDate() <= date
+    return today() <= date
 
 
 ''' Converting string object to date object.
