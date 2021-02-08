@@ -10,8 +10,10 @@ Args:
 Returns:
     bytes: response from this http request.
 e.g.1
+    from base.http_request import requestGet
     requestGet('https://google.com')
 e.g.2 (in case of basic authentication) 
+    from base.http_request import requestGet
     url = 'https://example.com/admin'
     user = 'admin'
     password = 'password123'
@@ -22,10 +24,9 @@ def requestGet(url: str, headers=None):
     if headers==None:
         req = urllib.request.Request(url=url)
     else:
-        req = urllib.request.Request(url=url, headers=headers)
+        req = urllib.request.Request(url=url, headers=headers, method='GET')
     with urllib.request.urlopen(req) as res:
-        response = res.read()
-    return response
+        return res.read()
 
 
 ''' HTTP POST REQUEST
@@ -34,6 +35,7 @@ Args:
 Returns:
     bytes: response from this http request.
 e.g.1
+    from base.http_request import requestPost
     url = 'https://example.com/api'
     headers = {
         'Content-Type': 'application/json',
@@ -44,6 +46,7 @@ e.g.1
     }
     requestPost(url, data, headers)
 e.g.2
+    from base.http_request import requestPost
     import concurrent.futures as confu
     url = 'https://example.com/api'
     headers = {
@@ -62,10 +65,9 @@ e.g.2
             future.result()
 '''
 def requestPost(url: str, data: dict, headers: dict):
-    req = urllib.request.Request(url=url, data=json.dumps(data).encode(), headers=headers)
+    req = urllib.request.Request(url=url, data=json.dumps(data).encode(), headers=headers, method='POST')
     with urllib.request.urlopen(req) as res:
-        response = res.read()
-    return response
+        return res.read()
 
 
 ''' get http header of basic authentication from the user and the password in plain text.
