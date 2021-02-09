@@ -10,6 +10,8 @@ Args:
 Returns:
     generator: splited lists.
 '''
+
+
 def splitList(l: list, n: int):
     for idx in range(0, len(l), n):
         yield l[idx:idx + n]
@@ -24,5 +26,7 @@ Args:
 Returns:
     generator: the extension of the file.
 '''
+
+
 def getExtension(file: str):
     return os.path.splitext(file)[1]

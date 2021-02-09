@@ -20,8 +20,10 @@ e.g.2 (in case of basic authentication)
     headers = getBasicAuthHeader(user, password)
     requestGet(url, headers)
 '''
+
+
 def requestGet(url: str, headers=None):
-    if headers==None:
+    if headers == None:
         req = urllib.request.Request(url=url)
     else:
         req = urllib.request.Request(url=url, headers=headers, method='GET')
@@ -64,8 +66,11 @@ e.g.2
         for future in confu.as_completed(futures):
             future.result()
 '''
+
+
 def requestPost(url: str, data: dict, headers: dict):
-    req = urllib.request.Request(url=url, data=json.dumps(data).encode(), headers=headers, method='POST')
+    req = urllib.request.Request(url=url, data=json.dumps(
+        data).encode(), headers=headers, method='POST')
     with urllib.request.urlopen(req) as res:
         return res.read()
 
@@ -84,10 +89,9 @@ e.g.
     output
         {'Authorization': 'Basic YWRtaW46cGFzc3dvcmQxMjM='}
 '''
+
+
 def getBasicAuthHeader(user: str, password: str):
-    base64_user_pasword = base64.b64encode('{}:{}'.format(user, password).encode('utf-8'))
+    base64_user_pasword = base64.b64encode(
+        '{}:{}'.format(user, password).encode('utf-8'))
     return {"Authorization": "Basic " + base64_user_pasword.decode('utf-8')}
-
-
-
-
