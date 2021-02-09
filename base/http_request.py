@@ -7,6 +7,7 @@ import base64
 ''' HTTP GET REQUEST
 Args:
     url (str): target URL.
+    headers (dict, optional): http request header.
 Returns:
     bytes: response from this http request.
 e.g.1
@@ -34,6 +35,8 @@ def requestGet(url: str, headers=None):
 ''' HTTP POST REQUEST
 Args:
     url (str): target URL.
+    data (dict): post data
+    headers (dict): http request header.
 Returns:
     bytes: response from this http request.
 e.g.1
