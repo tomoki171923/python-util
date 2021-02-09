@@ -11,6 +11,8 @@ Args:
 Returns:
     int: the number rounded up to the nearest integer
 '''
+
+
 def roundUp1(num: Decimal):
     if type(num) is not Decimal:
         num = Decimal(num)
@@ -26,6 +28,8 @@ Args:
 Returns:
     int: the number rounded up to the nearest ten
 '''
+
+
 def roundUp10(num: Decimal):
     if type(num) is not Decimal:
         num = Decimal(num)
@@ -41,6 +45,8 @@ Args:
 Returns:
     int: the number rounded down to the nearest integer
 '''
+
+
 def roundDown1(num: Decimal):
     if type(num) is not Decimal:
         num = Decimal(num)
@@ -56,6 +62,8 @@ Args:
 Returns:
     int: the number rounded down to the nearest ten
 '''
+
+
 def roundDown10(num: Decimal):
     if type(num) is not Decimal:
         num = Decimal(num)

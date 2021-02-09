@@ -7,6 +7,8 @@ import time
 Returns:
     datetime: the current time 
 '''
+
+
 def now():
     JST = timezone(timedelta(hours=+9), 'JST')
     return datetime.fromtimestamp(time.time(), JST)
@@ -16,6 +18,8 @@ def now():
 Returns:
     date: today
 '''
+
+
 def today():
     return now().date()
 
@@ -26,6 +30,8 @@ Args:
 Returns:
     bool: True / False
 '''
+
+
 def isFuture(date: datetime.date):
     return today() <= date
 
@@ -38,5 +44,7 @@ Args:
 Returns:
     date: date object
 '''
+
+
 def toDate(date: str, format='%Y/%m/%d'):
     return datetime.strptime(date, format).date()

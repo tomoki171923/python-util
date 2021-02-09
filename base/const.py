@@ -13,6 +13,9 @@ class myconst:
 '''
 
 
+import sys
+
+
 class _const(object):
     class ConstError(TypeError):
         pass
@@ -22,5 +25,5 @@ class _const(object):
             raise self.ConstError()
         self.__dict__[name] = value
 
-import sys
+
 sys.modules[__name__] = _const()
