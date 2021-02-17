@@ -7,6 +7,7 @@ import base64
 ''' HTTP GET REQUEST
 Args:
     url (str): target URL.
+    data (dict, optional): post data
     headers (dict, optional): http request header.
 Returns:
     bytes: response from this http request.
@@ -23,11 +24,17 @@ e.g.2 (in case of basic authentication)
 '''
 
 
-def requestGet(url: str, headers=None):
-    if headers == None:
-        req = urllib.request.Request(url=url)
-    else:
+def requestGet(url: str, data=None, headers=None):
+    if headers is None and data is None:
+        req = urllib.request.Request(url=url, method='GET')
+    elif headers is not None and data is None:
         req = urllib.request.Request(url=url, headers=headers, method='GET')
+    elif headers is None and data is not None:
+        req = urllib.request.Request(
+            url=url, data=json.dumps(data).encode(), method='GET')
+    else:
+        req = urllib.request.Request(
+            url=url, headers=headers, mdata=json.dumps(data).encode(), method='GET')
     with urllib.request.urlopen(req) as res:
         return res.read()
 
