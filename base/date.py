@@ -16,7 +16,7 @@ def now():
 
 ''' Get today in Japanese timezone.
 Returns:
-    date: today
+    datetime.date: today
 '''
 
 
@@ -26,7 +26,7 @@ def today():
 
 ''' Checking whether the date is future or not
 Args:
-    date (date): date for comparison.
+    date (datetime.date): date for comparison.
 Returns:
     bool: True / False
 '''
@@ -42,9 +42,35 @@ Args:
     format (str, optional): date format.
 
 Returns:
-    date: date object
+    datetime.date: date object
 '''
 
 
 def toDate(date: str, format='%Y/%m/%d'):
     return datetime.strptime(date, format).date()
+
+
+''' Add days to date object.
+Args:
+    datetime.date (str): date object.
+    number (int): the number of days to add.
+Returns:
+    datetime.date: date object
+'''
+
+
+def addDays(date: datetime.date, number: int):
+    return date + timedelta(days=number)
+
+
+''' Subtract days to date object.
+Args:
+    datetime.date (str): date object.
+    number (int): the number of days to subtract.
+Returns:
+    datetime.date: date object
+'''
+
+
+def subtractDays(date: datetime.date, number: int):
+    return date + timedelta(days=-number)
