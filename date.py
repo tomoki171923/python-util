@@ -36,20 +36,6 @@ def isFuture(date: datetime.date):
     return today() <= date
 
 
-''' Converting string object to date object.
-Args:
-    date (str): the date with string object.
-    format (str, optional): date format.
-
-Returns:
-    datetime.date: date object
-'''
-
-
-def toDate(date: str, format='%Y/%m/%d'):
-    return datetime.strptime(date, format).date()
-
-
 ''' Add days to date object.
 Args:
     datetime.date (str): date object.

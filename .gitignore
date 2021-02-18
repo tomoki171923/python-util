@@ -130,3 +130,5 @@ dmypy.json
 
 
 .code-workspace
+
+stab.py
