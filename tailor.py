@@ -16,17 +16,3 @@ def splitList(l: list, n: int):
     for idx in range(0, len(l), n):
         yield l[idx:idx + n]
 
-
-''' get an extension of the file.
-e.g.
-    test/test.json # => json
-    sample.csv # => csv
-Args:
-    file (str): file name or path.
-Returns:
-    generator: the extension of the file.
-'''
-
-
-def getExtension(file: str):
-    return os.path.splitext(file)[1]
