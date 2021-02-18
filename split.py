@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
+from typing import Generator
 
 ''' split a list.
 e.g.
@@ -12,7 +12,11 @@ Returns:
 '''
 
 
-def splitList(l: list, n: int):
+def splitList(l: list, n: int) -> Generator[list, None, None]:
+    if type(l) is not list:
+        raise TypeError('l is invalid type.')
+    if type(n) is not int:
+        raise TypeError('n is invalid type.')
     for idx in range(0, len(l), n):
         yield l[idx:idx + n]
 
