@@ -7,7 +7,7 @@ class UtExtract(unittest.TestCase):
 
     def test_extension(self):
         ut_data: str = '/tmp/sample.json'
-        expected_result = 'json'
+        expected_result: str = 'json'
         result = extension(ut_data)
         # type test
         self.assertIs(type(result), str)

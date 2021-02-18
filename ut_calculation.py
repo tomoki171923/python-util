@@ -25,7 +25,7 @@ class UtCalculation(unittest.TestCase):
 
     def test_roundUp1_case1(self):
         ut_data: float = 123.456
-        expected_result = 123
+        expected_result: int = 123
         result = roundUp1(ut_data)
         # type test
         self.assertIs(type(result), int)
@@ -61,7 +61,7 @@ class UtCalculation(unittest.TestCase):
 
     def test_roundDown1_case1(self):
         ut_data: float = 123.456
-        expected_result = 123
+        expected_result: int = 123
         result = roundDown1(ut_data)
         # type test
         self.assertIs(type(result), int)
@@ -79,7 +79,7 @@ class UtCalculation(unittest.TestCase):
 
     def test_roundDown10_case1(self):
         ut_data: float = 1234.56
-        expected_result = 1230
+        expected_result: int = 1230
         result = roundDown10(ut_data)
         # type test
         self.assertIs(type(result), int)
