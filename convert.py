@@ -5,41 +5,52 @@ import pickle
 import base64
 import json
 
-''' convert String to List.
+
+''' convert String to Dict.
 Args:
     obj (str): the target obj.
-    split_key (str, optional): split key.
 Returns:
-    list: the target obj.
-e.g.1
-    obj="1 2 3" # => [1, 2, 3]
-e.g.2
-    obj="1,2,3", split_key="," # => [1, 2, 3]
+    dict: the target obj.
+e.g.
+    obj = '{"key1":"value1", "key2":123}'
+        # => {'key1': 'value1', 'key2': 123}
 '''
 
 
-def strToList(obj: str, split_key=None):
-    if split_key is not None:
-        return obj.split(split_key)
-    return obj.split()
+def strToDict(obj: str) -> dict:
+    return ast.literal_eval(obj)
 
 
 ''' convert String to Dict.
 Args:
     obj (str): the target obj.
 Returns:
-    dict or list: the target obj.
-e.g.1
-    obj = '{"key1":"value1", "key2":123}'
-        # => {'key1': 'value1', 'key2': 123}
-e.g.2
+    list: the target obj.
+e.g.
     obj = '[1, "aaa", 3]'
         # => [1, 'aaa', 3]
 '''
 
 
-def strToDict(obj: str):
+def strToList(obj: str) -> list:
     return ast.literal_eval(obj)
+
+
+''' convert String to List by split key.
+Args:
+    obj (str): the target obj.
+    split_key (str, optional): split key.
+Returns:
+    list: the target obj.
+e.g.1
+    obj='aa bb cc', split_key=' ' # => ['aa', 'bb', 'cc']
+e.g.2
+    obj='aa,bb,cc', split_key=',' # => ['aa', 'bb', 'cc']
+'''
+
+
+def strToListByKey(obj: str, split_key: str) -> list:
+    return obj.split(split_key)
 
 
 ''' convert Dict to Bytes. (Endode)
@@ -53,7 +64,9 @@ e.g.
 '''
 
 
-def dictToBytes(obj: dict):
+def dictToBytes(obj: dict) -> bytes:
+    if type(obj) is not dict:
+        raise TypeError('obj is invalid type.')
     return base64.urlsafe_b64encode(json.dumps(obj).encode())
 
 
@@ -68,5 +81,7 @@ e.g.
 '''
 
 
-def bytesToDict(obj: bytes):
-    return base64.urlsafe_b64decode(obj).decode()
+def bytesToDict(obj: bytes) -> dict:
+    if type(obj) is not bytes:
+        raise TypeError('obj is invalid type.')
+    return strToDict(base64.urlsafe_b64decode(obj).decode())
