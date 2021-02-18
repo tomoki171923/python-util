@@ -28,7 +28,7 @@ Returns:
 '''
 
 
-def loadJson(file_path: str, return_type=1):
+def loadJson(file_path: str, return_type: int = 1):
     with open(file=file_path) as file:
         json_data = json.load(file)
         if return_type == 2:

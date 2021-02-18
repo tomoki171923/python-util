@@ -1,6 +1,6 @@
 import unittest
 
-from calculation import roundUp1, roundUp10, roundDown1, roundDown10
+from round import roundUp1, roundUp10, roundDown1, roundDown10
 import decimal
 
 

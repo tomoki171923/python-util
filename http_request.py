@@ -101,7 +101,7 @@ e.g.
 '''
 
 
-def getBasicAuthHeader(user: str, password: str):
+def makeBasicAuthHeader(user: str, password: str):
     base64_user_pasword = base64.b64encode(
         '{}:{}'.format(user, password).encode('utf-8'))
     return {"Authorization": "Basic " + base64_user_pasword.decode('utf-8')}

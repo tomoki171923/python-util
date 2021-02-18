@@ -4,6 +4,7 @@ import ast
 import pickle
 import base64
 import json
+from datetime import datetime, date
 
 
 ''' convert String to Dict.
@@ -85,3 +86,31 @@ def bytesToDict(obj: bytes) -> dict:
     if type(obj) is not bytes:
         raise TypeError('obj is invalid type.')
     return strToDict(base64.urlsafe_b64decode(obj).decode())
+
+
+''' Converting string object to datetime object.
+Args:
+    date_string (str): the time with string object.
+    format (str): time format.
+
+Returns:
+    datetime: datetime object
+'''
+
+
+def strToDatetime(date_string: str, format: str) -> datetime:
+    return datetime.strptime(date_string, format)
+
+
+''' Converting string object to date object.
+Args:
+    date_string (str): the date with string object.
+    format (str): date format.
+
+Returns:
+    datetime.date: date object
+'''
+
+
+def strToDate(date_string: str, format: str) -> date:
+    return strToDatetime(date_string, format).date()
