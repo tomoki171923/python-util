@@ -4,7 +4,7 @@ from round import roundUp1, roundUp10, roundDown1, roundDown10
 import decimal
 
 
-class UtCalculation(unittest.TestCase):
+class UtRound(unittest.TestCase):
     # constructor of unittest class
     @classmethod
     def setUpClass(self):
