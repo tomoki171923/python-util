@@ -6,9 +6,9 @@ from extract import extension
 class UtExtract(unittest.TestCase):
 
     def test_extension(self):
-        ut_data: str = '/tmp/sample.json'
+        ut_arg: str = '/tmp/sample.json'
         expected_result: str = 'json'
-        result = extension(ut_data)
+        result = extension(ut_arg)
         # type test
         self.assertIs(type(result), str)
         # value test

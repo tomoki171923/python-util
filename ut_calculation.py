@@ -24,72 +24,72 @@ class UtCalculation(unittest.TestCase):
         pass
 
     def test_roundUp1_case1(self):
-        ut_data: float = 123.456
+        ut_arg: float = 123.456
         expected_result: int = 123
-        result = roundUp1(ut_data)
+        result = roundUp1(ut_arg)
         # type test
         self.assertIs(type(result), int)
         # value test
         self.assertEqual(expected_result, result)
 
     def test_roundUp1_case2(self):
-        ut_data: float = 123.567
+        ut_arg: float = 123.567
         expected_result: int = 124
-        result = roundUp1(ut_data)
+        result = roundUp1(ut_arg)
         # type test
         self.assertIs(type(result), int)
         # value test
         self.assertEqual(expected_result, result)
 
     def test_roundUp10_case1(self):
-        ut_data: float = 1234.56
+        ut_arg: float = 1234.56
         expected_result: int = 1230
-        result = roundUp10(ut_data)
+        result = roundUp10(ut_arg)
         # type test
         self.assertIs(type(result), int)
         # value test
         self.assertEqual(expected_result, result)
 
     def test_roundUp10_case2(self):
-        ut_data: float = 1235.67
+        ut_arg: float = 1235.67
         expected_result: int = 1240
-        result = roundUp10(ut_data)
+        result = roundUp10(ut_arg)
         # type test
         self.assertIs(type(result), int)
         # value test
         self.assertEqual(expected_result, result)
 
     def test_roundDown1_case1(self):
-        ut_data: float = 123.456
+        ut_arg: float = 123.456
         expected_result: int = 123
-        result = roundDown1(ut_data)
+        result = roundDown1(ut_arg)
         # type test
         self.assertIs(type(result), int)
         # value test
         self.assertEqual(expected_result, result)
 
     def test_roundDown1_case2(self):
-        ut_data: float = 123.567
+        ut_arg: float = 123.567
         expected_result: int = 123
-        result = roundDown1(ut_data)
+        result = roundDown1(ut_arg)
         # type test
         self.assertIs(type(result), int)
         # value test
         self.assertEqual(expected_result, result)
 
     def test_roundDown10_case1(self):
-        ut_data: float = 1234.56
+        ut_arg: float = 1234.56
         expected_result: int = 1230
-        result = roundDown10(ut_data)
+        result = roundDown10(ut_arg)
         # type test
         self.assertIs(type(result), int)
         # value test
         self.assertEqual(expected_result, result)
 
     def test_roundDown10_case2(self):
-        ut_data: float = 1235.67
+        ut_arg: float = 1235.67
         expected_result: int = 1230
-        result = roundDown10(ut_data)
+        result = roundDown10(ut_arg)
         # type test
         self.assertIs(type(result), int)
         # value test
