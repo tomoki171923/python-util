@@ -3,7 +3,7 @@ import unittest
 from split import splitList
 
 
-class UtExtract(unittest.TestCase):
+class UtSplit(unittest.TestCase):
 
     def test_splitList(self):
         ut_arg: list = [1, 2, 3, 4, 5, 6, 7]
