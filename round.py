@@ -54,7 +54,7 @@ e.g. num = 1234.56 # => 1230
 e.g. num = 1235.67 # => 1230
 
 Args:
-    num (float): the target number.
+    num (int | float): the target number.
 Returns:
     int: the number rounded down to the nearest ten
 '''
