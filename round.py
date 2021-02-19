@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# the following is not necessary if Python version is 3.9 or over.
+from __future__ import annotations
 
 from decimal import Decimal, ROUND_HALF_UP, ROUND_DOWN
 
@@ -22,13 +24,13 @@ e.g. num = 1234.56 # => 1230
 e.g. num = 1235.67 # => 1240
 
 Args:
-    num (float): the target number.
+    num (int | float): the target number.
 Returns:
     int: the number rounded up to the nearest ten
 '''
 
 
-def roundUp10(num: float) -> int:
+def roundUp10(num: int | float) -> int:
     return int(Decimal(num).quantize(Decimal('1E1'), rounding=ROUND_HALF_UP))
 
 
@@ -58,5 +60,5 @@ Returns:
 '''
 
 
-def roundDown10(num: float) -> int:
+def roundDown10(num: int | float) -> int:
     return int(Decimal(num).quantize(Decimal('1E1'), rounding=ROUND_DOWN))
