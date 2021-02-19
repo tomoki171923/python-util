@@ -59,6 +59,25 @@ class UtRound(unittest.TestCase):
         # value test
         self.assertEqual(expected_result, result)
 
+    def test_roundUp10_case3(self):
+        ut_arg: int = 1234
+        expected_result: int = 1230
+        result = roundUp10(ut_arg)
+        # type test
+        self.assertIs(type(result), int)
+        # value test
+        self.assertEqual(expected_result, result)
+
+    def test_roundUp10_case4(self):
+        ut_arg: int = 1235
+        expected_result: int = 1240
+        result = roundUp10(ut_arg)
+        # type test
+        self.assertIs(type(result), int)
+        # value test
+        self.assertEqual(expected_result, result)
+
+
     def test_roundDown1_case1(self):
         ut_arg: float = 123.456
         expected_result: int = 123
@@ -88,6 +107,24 @@ class UtRound(unittest.TestCase):
 
     def test_roundDown10_case2(self):
         ut_arg: float = 1235.67
+        expected_result: int = 1230
+        result = roundDown10(ut_arg)
+        # type test
+        self.assertIs(type(result), int)
+        # value test
+        self.assertEqual(expected_result, result)
+
+    def test_roundDown10_case3(self):
+        ut_arg: int = 1234
+        expected_result: int = 1230
+        result = roundDown10(ut_arg)
+        # type test
+        self.assertIs(type(result), int)
+        # value test
+        self.assertEqual(expected_result, result)
+
+    def test_roundDown10_case4(self):
+        ut_arg: int = 1235
         expected_result: int = 1230
         result = roundDown10(ut_arg)
         # type test

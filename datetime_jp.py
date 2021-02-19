@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime, timedelta, timezone
-import time
+from datetime import datetime, timedelta, timezone, date
+
 
 ''' Get the current time in Japanese timezone.
 Returns:
@@ -9,9 +9,9 @@ Returns:
 '''
 
 
-def now():
+def now() -> datetime:
     JST = timezone(timedelta(hours=+9), 'JST')
-    return datetime.fromtimestamp(time.time(), JST)
+    return datetime.now(tz=JST)
 
 
 ''' Get today in Japanese timezone.
@@ -20,7 +20,7 @@ Returns:
 '''
 
 
-def today():
+def today() -> date:
     return now().date()
 
 
@@ -32,8 +32,8 @@ Returns:
 '''
 
 
-def isFuture(date: datetime.date):
-    return today() <= date
+def isFuture(date: date) -> bool:
+    return today() < date
 
 
 ''' Add days to date object.
@@ -45,7 +45,7 @@ Returns:
 '''
 
 
-def addDays(date: datetime.date, number: int):
+def addDays(date: date, number: int) -> date:
     return date + timedelta(days=number)
 
 
@@ -58,5 +58,5 @@ Returns:
 '''
 
 
-def subtractDays(date: datetime.date, number: int):
+def subtractDays(date: date, number: int) -> date:
     return date + timedelta(days=-number)
