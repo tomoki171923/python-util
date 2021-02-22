@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# the following is not necessary if Python version is 3.9 or over.
+from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone, date
 
@@ -24,39 +26,48 @@ def today() -> date:
     return now().date()
 
 
-''' Checking whether the date is future or not
+''' Checking whether the date is past or not
 Args:
-    date (datetime.date): date for comparison.
+    date (datetime.datetime | datetime.date): date for comparison.
 Returns:
     bool: True / False
 '''
 
 
-def isFuture(date: date) -> bool:
-    return today() < date
+def isPast(d: datetime | date) -> bool:
+    if isinstance(d, datetime):
+        return d <= now()
+    elif isinstance(d, date):
+        return d <= today()
+    else:
+        raise TypeError('d is invalid type.')
 
 
-''' Add days to date object.
+''' Checking whether the date is future or not
 Args:
-    datetime.date (str): date object.
-    number (int): the number of days to add.
+    date (datetime.datetime | datetime.date): date for comparison.
 Returns:
-    datetime.date: date object
+    bool: True / False
 '''
 
 
-def addDays(date: date, number: int) -> date:
-    return date + timedelta(days=number)
+def isFuture(d: datetime | date) -> bool:
+    if isinstance(d, datetime):
+        return now() <= d
+    elif isinstance(d, date):
+        return today() <= d
+    else:
+        raise TypeError('d is invalid type.')
 
 
-''' Subtract days to date object.
+''' Change timezone.
 Args:
-    datetime.date (str): date object.
-    number (int): the number of days to subtract.
+    dt (datetime): datetime object.
+    tz (timezone): the timezone to change.
 Returns:
-    datetime.date: date object
+    datetime.datetime: datetime object
 '''
 
 
-def subtractDays(date: date, number: int) -> date:
-    return date + timedelta(days=-number)
+def changeTimezone(dt: datetime, tz: timezone) -> datetime:
+    return dt.astimezone(tz)

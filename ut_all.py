@@ -10,6 +10,7 @@ UT_LIST: list[str] = [
     'extract',
     'round',
     'split',
+    'datetime_jp',
 ]
 
 # execute all unit test
