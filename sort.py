@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from typing import Generator
-from .base_enum import BaseEnum
+from base_enum import BaseEnum
 
 ''' sort a list contains dict objects.
-
 Args:
     l (list): the target list.
     n (int): the number to split.
@@ -14,7 +13,6 @@ e.g.
     l = [{'name': 'suzuki', 'score': 80}, {'name': 'tanaka', 'score': 30}, {'name': 'sato', 'score': 100}],
     sort_key="score",
     order = BaseEnum.DESC
-
     # => [{'name': 'sato', 'score': 100}, {'name': 'suzuki', 'score': 80}, {'name': 'tanaka', 'score': 30}]
 '''
 
@@ -31,38 +29,46 @@ def sortDict(l: list, sort_key: str, order: int) -> list:
     return sorted_list
 
 
+''' get ranking of target score using binary search algorithm.
+Args:
+    score_list (list): the score list.
+    target_score (int): the target score.
+Returns:
+    int: the rank of target score in score list.
+e.g.1
+    score_list = [2,5,6,8,1,9,11], target_score = 15
+    # => 1
+e.g.2
+    score_list = [2,5,6,8,1,9,11], target_score = 5
+    # => 5
+e.g.3
+    score_list = [2,5,6,8,1,9,11], target_score = 0
+    # => 8
+'''
 
-def ranking_simple_search(scorelist:list, target:int) -> int:
-    scorelist.sort(reverse=True)
-    rank:int = 1
-    for score in scorelist:
-        if score <= target:
-            return rank
-        rank += 1
 
-
-def ranking_binary_search(scorelist:list, target_score:int) -> int:
+def ranking(score_list: list, target_score: int) -> int:
     # sort the score list.
-    scorelist.sort(reverse=True)
-    length:int = len(scorelist)
+    score_list.sort(reverse=True)
+    length: int = len(score_list)
     # the element of the highest score on the scorelist
-    high:int = 0
+    high: int = 0
     # the element of the lowest score on the scorelist
-    low:int = length - 1
-    mid:int
-    mid_score:int
+    low: int = length - 1
+    mid: int
+    mid_score: int
     # using binary search algorithm.
     while high <= low:
         # get middle score
         mid = (high + low) // 2
-        mid_score = scorelist[mid]
+        mid_score = score_list[mid]
         if mid_score == target_score:
             # find target score.
-            return mid +1
+            return mid + 1
         elif mid_score > target_score:
             high = mid + 1
         else:
             low = mid - 1
-    if target_score< scorelist[length-1]:
+    if target_score < score_list[length-1]:
         return length + 1
-    return mid + 1 
+    return mid + 1
