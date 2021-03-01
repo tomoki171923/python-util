@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from typing import Generator
-from base_enum import BaseEnum
+from .base_enum import BaseEnum
 
 ''' sort a list contains dict objects.
 Args:
