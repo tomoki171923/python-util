@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import Generator
 from .base_enum import BaseEnum
+from typing import List
 
 ''' sort a list contains dict objects.
 Args:
@@ -17,7 +18,7 @@ e.g.
 '''
 
 
-def sortDict(l: list, sort_key: str, order: int) -> list:
+def sortDict(l: List[dict], sort_key: str, order: int) -> List[dict]:
     if type(l) is not list:
         raise TypeError('l is invalid type.')
     reverse: bool
@@ -47,7 +48,7 @@ e.g.3
 '''
 
 
-def ranking(score_list: list, target_score: int) -> int:
+def ranking(score_list: List[int], target_score: int) -> int:
     # sort the score list.
     score_list.sort(reverse=True)
     length: int = len(score_list)

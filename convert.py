@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
+# the following is not necessary if Python version is 3.9 or over.
+from __future__ import annotations
 
 import ast
 import pickle
 import base64
 import json
 from datetime import datetime, date
+from typing import Any
 
 
 ''' convert String to Dict.
@@ -52,6 +55,46 @@ e.g.2
 
 def strToListByKey(obj: str, split_key: str) -> list:
     return obj.split(split_key)
+
+
+''' convert Json Document to Python Object.
+the conversion table is to refer to the following.
+https://docs.python.org/3/library/json.html#json-to-py-table
+Args:
+    obj (str): json document.
+Returns:
+    Any: python object.
+e.g.1
+    obj = '["foo", {"bar":["baz", null, 1.0, 2]}]'
+        # => ['foo', {'bar': ['baz', None, 1.0, 2]}] // <class 'list'>
+e.g.2
+    obj = '{"bar":["baz", null, 1.0, 2]}'
+        # => {'bar': ['baz', None, 1.0, 2]} // <class 'dict'>
+'''
+
+
+def jsonDecoder(obj: str) -> Any:
+    return json.loads(obj)
+
+
+''' convert Python Object to Json Document.
+the conversion table is to refer to the following.
+https://docs.python.org/3/library/json.html#py-to-json-table
+Args:
+    obj (Any): python object.
+Returns:
+    str: json document.
+e.g.1
+    obj = ['foo', {'bar': ['baz', None, 1.0, 2]}]
+        # => '["foo", {"bar":["baz", null, 1.0, 2]}]'
+e.g.2
+    obj = {'bar': ['baz', None, 1.0, 2]}
+        # => '{"bar":["baz", null, 1.0, 2]}'
+'''
+
+
+def jsonEncoder(obj: Any) -> str:
+    return json.dumps(obj)
 
 
 ''' convert Dict to Bytes. (Endode)
