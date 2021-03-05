@@ -1,7 +1,8 @@
 import unittest
 
-from convert import strToDict, strToList, strToListByKey, dictToBytes, bytesToDict, strToDatetime, strToDate
+from convert import strToDict, strToList, strToListByKey, dictToBytes, bytesToDict, strToDatetime, strToDate, jsonDecoder, jsonEncoder
 from datetime import datetime, date, timedelta, timezone
+import json
 
 
 class UtConvert(unittest.TestCase):
@@ -68,6 +69,42 @@ class UtConvert(unittest.TestCase):
         # value test
         self.assertEqual(expected_result, result)
 
+    def test_jsonDecoder_case1(self):
+        ut_arg: str = '["foo", {"bar":["baz", null, 1.0, 2]}]'
+        expected_result: list = ['foo', {'bar': ['baz', None, 1.0, 2]}]
+        result = jsonDecoder(ut_arg)
+        # type test
+        self.assertIs(type(result), list)
+        # value test
+        self.assertEqual(expected_result, result)
+
+    def test_jsonDecoder_case2(self):
+        ut_arg: str = '{"bar":["baz", null, 1.0, 2]}'
+        expected_result: dict = {'bar': ['baz', None, 1.0, 2]}
+        result = jsonDecoder(ut_arg)
+        # type test
+        self.assertIs(type(result), dict)
+        # value test
+        self.assertEqual(expected_result, result)
+
+    def test_jsonEncoder_case1(self):
+        ut_arg: list = ['foo', {'bar': ['baz', None, 1.0, 2]}]
+        expected_result: str = '["foo", {"bar": ["baz", null, 1.0, 2]}]'
+        result = jsonEncoder(ut_arg)
+        # type test
+        self.assertIs(type(result), str)
+        # value test
+        self.assertEqual(expected_result, result)
+
+    def test_jsonEncoder_case2(self):
+        ut_arg: dict = {'bar': ['baz', None, 1.0, 2]}
+        expected_result: str = '{"bar": ["baz", null, 1.0, 2]}'
+        result = jsonEncoder(ut_arg)
+        # type test
+        self.assertIs(type(result), str)
+        # value test
+        self.assertEqual(expected_result, result)
+
     def test_dictToBytes(self):
         ut_arg: dict = {
             "key1": "value1",
@@ -97,7 +134,8 @@ class UtConvert(unittest.TestCase):
     def test_strToDatetime(self):
         ut_arg: str = '2021-01-01 00:00:00.000000+09:00'
         ut_arg2: str = '%Y-%m-%d %H:%M:%S.%f%z'
-        expected_result: datetime = datetime(2021, 1, 1, hour=0, minute=0, second=0, microsecond=0, tzinfo=timezone(timedelta(hours=9)))
+        expected_result: datetime = datetime(
+            2021, 1, 1, hour=0, minute=0, second=0, microsecond=0, tzinfo=timezone(timedelta(hours=9)))
         result = strToDatetime(ut_arg, ut_arg2)
         # type test
         self.assertIs(type(result), datetime)
@@ -125,6 +163,10 @@ class UtConvert(unittest.TestCase):
             strToListByKey(123, 1)
         with self.assertRaises(TypeError):
             dictToBytes([1, 2, 3])
+        with self.assertRaises(json.decoder.JSONDecodeError):
+            jsonDecoder("{'hoge':'hoge'}")
+        with self.assertRaises(TypeError):
+            jsonEncoder({'hoge': 123}, 2)
         with self.assertRaises(TypeError):
             bytesToDict(
                 'eyJrZXkxIjogInZhbHVlMSIsICJrZXkyIjogMTIzLCAia2V5MyI6ICJodHRwczovL3d3dy5nb29nbGUuY29tLyJ9')
@@ -140,4 +182,3 @@ class UtConvert(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-    

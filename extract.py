@@ -15,3 +15,15 @@ Returns:
 
 def extension(file_path: str) -> str:
     return os.path.splitext(file_path)[1][1:]
+
+
+''' extract the name of directory which contains target file from file path.
+e.g.
+    parent/child/test.json # => child
+Args:
+    file_path (str): file path.
+Returns:
+    str: the name of directory which contains target file.
+'''
+def directoryName(file_path: str) -> str:
+    return os.path.basename(os.path.dirname(file_path))
