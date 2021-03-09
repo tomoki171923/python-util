@@ -1,6 +1,6 @@
 import unittest
 
-from extract import extension, directoryName
+from extract import extension, currentDirName
 
 
 class UtExtract(unittest.TestCase):
@@ -14,10 +14,10 @@ class UtExtract(unittest.TestCase):
         # value test
         self.assertEqual(expected_result, result)
 
-    def test_directoryName(self):
+    def test_currentDirName(self):
         ut_arg: str = '/tmp/sample.json'
         expected_result: str = 'tmp'
-        result = directoryName(ut_arg)
+        result = currentDirName(ut_arg)
         # type test
         self.assertIs(type(result), str)
         # value test
@@ -27,7 +27,7 @@ class UtExtract(unittest.TestCase):
         with self.assertRaises(TypeError):
             extension(123)
         with self.assertRaises(TypeError):
-            directoryName(123)
+            currentDirName(123)
 
 if __name__ == "__main__":
     unittest.main()

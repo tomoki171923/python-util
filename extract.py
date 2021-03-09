@@ -25,5 +25,20 @@ Args:
 Returns:
     str: the name of directory which contains target file.
 '''
-def directoryName(file_path: str) -> str:
+def currentDirName(file_path: str) -> str:
     return os.path.basename(os.path.dirname(file_path))
+
+
+''' extract the name of file from file path.
+e.g.
+    parent/child/test.json # => test.json
+Args:
+    file_path (str): file path.
+Returns:
+    str: the name of file.
+'''
+def fileName(file_path: str) -> str:
+    return os.path.basename(file_path)
+
+
+
