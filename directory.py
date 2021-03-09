@@ -26,3 +26,23 @@ def getFilesPath(dir_path: str, extension: str = None) -> Generator[str, None, N
             if p.is_file():
                 yield str(p)
 
+
+''' extract the directory's name from file path.
+e.g.
+    parent/child/test.json # => child
+Args:
+    file_path (str): file path.
+    hierarchy (int): target hierarchy of directory.
+Returns:
+    str: the directory's name.
+e.g.1
+    file_path = 'parent/child/test.json'
+    hierarchy = 0
+        # => 'parent'
+e.g.2
+    file_path = 'parent/child/test.json'
+    hierarchy = 1
+        # => 'child'
+'''
+def dirName(file_path: str, hierarchy:int) -> str:
+    return os.path.dirname(file_path).split('/')[hierarchy]
