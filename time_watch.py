@@ -35,24 +35,8 @@ class TimeWatch:
         start_time = self.__actions[action_name]["start"]
         end_time = time.time()
         elapsed_time = end_time - start_time
-        item = {
-            'end': end_time,
-            'elapsed_time': elapsed_time
-        }
-        self.__actions[action_name].update(item)
-
-    ''' print the elapsed time of action.
-    Args:
-        action_name (str): an action name.
-    '''
-
-    def print(self, action_name: str) -> None:
-        elapsed_time = self.__actions[action_name]["elapsed_time"]
         print(
             f"[action name : {action_name} ] elapsed time : {elapsed_time * 1000}[ms]")
+        self.__actions[action_name].update(item)
+        del self.__actions[action_name]
 
-    ''' clear instance variable.
-    '''
-
-    def clear(self) -> None:
-        self.__actions.clear()
