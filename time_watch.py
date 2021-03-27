@@ -37,6 +37,5 @@ class TimeWatch:
         elapsed_time = end_time - start_time
         print(
             f"[action name : {action_name} ] elapsed time : {elapsed_time * 1000}[ms]")
-        self.__actions[action_name].update(item)
         del self.__actions[action_name]
 
