@@ -73,7 +73,7 @@ e.g.2
 '''
 
 
-def jsonDecoder(obj: str) -> Any:
+def jsonDecoder(obj: bytes | str) -> Any:
     return json.loads(obj)
 
 
