@@ -39,7 +39,7 @@ def requestGet(url: str, data=None, headers=None):
         return res.read()
 
 
-''' HTTP POST REQUEST
+''' HTTP POST/PUT REQUEST
 Args:
     url (str): target URL.
     data (dict): post data
@@ -81,6 +81,12 @@ e.g.2
 def requestPost(url: str, data: dict, headers: dict):
     req = urllib.request.Request(url=url, data=json.dumps(
         data).encode(), headers=headers, method='POST')
+    with urllib.request.urlopen(req) as res:
+        return res.read()
+
+def requestPut(url: str, data: dict, headers: dict):
+    req = urllib.request.Request(url=url, data=json.dumps(
+        data).encode(), headers=headers, method='PUT')
     with urllib.request.urlopen(req) as res:
         return res.read()
 

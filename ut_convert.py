@@ -87,6 +87,15 @@ class UtConvert(unittest.TestCase):
         # value test
         self.assertEqual(expected_result, result)
 
+    def test_jsonDecoder_case3(self):
+        ut_arg: bytes = b'["foo", {"bar":["baz", null, 1.0, 2]}]'
+        expected_result: list = ['foo', {'bar': ['baz', None, 1.0, 2]}]
+        result = jsonDecoder(ut_arg)
+        # type test
+        self.assertIs(type(result), list)
+        # value test
+        self.assertEqual(expected_result, result)
+
     def test_jsonEncoder_case1(self):
         ut_arg: list = ['foo', {'bar': ['baz', None, 1.0, 2]}]
         expected_result: str = '["foo", {"bar": ["baz", null, 1.0, 2]}]'
