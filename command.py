@@ -32,11 +32,11 @@ def execCmd(cmd: str, output:bool=True, error_option=BaseEnum.STOP) -> subproces
             return result
         else:
             # command failed
-            if error_option == CliEnum.CMD_OPTION_STOP:
+            if error_option == BaseEnum.STOP:
                 # stop
                 if output is True: __output(result, 'red') 
                 raise Exception('ERROR happened. Stop this process.')
-            elif error_option == CliEnum.CMD_OPTION_CONTINUE:
+            elif error_option == BaseEnum.CONTINUE:
                 # continue
                 if output is True: __output(result, 'yellow') 
                 return result
