@@ -71,3 +71,29 @@ Returns:
 
 def changeTimezone(dt: datetime, tz: timezone) -> datetime:
     return dt.astimezone(tz)
+
+
+''' Get future date.
+Args:
+    base_date (datetime): the base date.
+    days (int): tha number of days for future.
+Returns:
+    datetime.datetime: datetime object
+'''
+
+
+def futureDate(base_date: datetime, days: int) -> datetime:
+    return base_date + timedelta(days=days)
+
+
+''' Get past date.
+Args:
+    base_date (datetime): the base date.
+    days (int): tha number of days for past.
+Returns:
+    datetime.datetime: datetime object
+'''
+
+
+def pastDate(base_date: datetime, days: int) -> datetime:
+    return base_date - timedelta(days=days)
