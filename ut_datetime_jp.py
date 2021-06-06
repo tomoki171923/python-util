@@ -1,6 +1,6 @@
 import unittest
 
-from datetime_jp import now, today, isPast, isFuture, changeTimezone
+from datetime_jp import now, today, isPast, isFuture, changeTimezone, futureDate, pastDate
 from datetime import datetime, timedelta, date
 import time
 import pytz
@@ -114,6 +114,26 @@ class UtDatetimeJp(unittest.TestCase):
         # value test (allowed an error of 1 second)
         self.assertAlmostEqual(expected_result, result,
                                delta=timedelta(seconds=1))
+
+    def test_futureDate(self):
+        ut_arg: date = date( 2020 , 1 , 1 )
+        ut_arg2: int = 30
+        expected_result: date = date( 2020 , 1 , 31 )
+        result = futureDate(ut_arg, ut_arg2)
+        # type test
+        self.assertIs(type(result), date)
+        # value test
+        self.assertEqual(expected_result, result)
+
+    def test_pastDate(self):
+        ut_arg: date = date( 2020 , 1 , 1 )
+        ut_arg2: int = 30
+        expected_result: date = date( 2019 , 12 , 2 )
+        result = pastDate(ut_arg, ut_arg2)
+        # type test
+        self.assertIs(type(result), date)
+        # value test
+        self.assertEqual(expected_result, result)
 
     def test_args(self):
         with self.assertRaises(TypeError):
