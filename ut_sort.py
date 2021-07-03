@@ -12,12 +12,11 @@ class UtSort(unittest.TestCase):
             {'name': 'tanaka', 'score': 30},
             {'name': 'sato', 'score': 100}]
         ut_arg2: str = "score"
-        ut_arg3: str = BaseEnum.DESC
         expected_result: list = [
             {'name': 'sato', 'score': 100},
             {'name': 'suzuki', 'score': 80},
             {'name': 'tanaka', 'score': 30}]
-        result = sortDict(ut_arg, ut_arg2, ut_arg3)
+        result = sortDict(ut_arg, ut_arg2)
         # type test
         self.assertIs(type(result), list)
         # value test

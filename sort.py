@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from typing import Generator
-from .base_enum import BaseEnum
+from base_enum import BaseEnum
 from typing import List
 
 ''' sort a list contains dict objects.
 Args:
     l (list): the target list.
     n (int): the number to split.
+    order (int, optional): order type.
 Returns:
     list: sorted list.
 e.g.
@@ -18,7 +19,7 @@ e.g.
 '''
 
 
-def sortDict(l: List[dict], sort_key: str, order: int) -> List[dict]:
+def sortDict(l: List[dict], sort_key: str, order: int = BaseEnum.DESC) -> List[dict]:
     if type(l) is not list:
         raise TypeError('l is invalid type.')
     reverse: bool
