@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import ast
-import pickle
+from decimal import Decimal
 import base64
 import json
 from datetime import datetime, date
@@ -94,7 +94,13 @@ e.g.2
 
 
 def jsonEncoder(obj: Any) -> str:
-    return json.dumps(obj)
+    return json.dumps(obj, default=__jsonEncoder)
+
+
+def __jsonEncoder(obj: Any):
+    if isinstance(obj, Decimal):
+        return float(obj)
+    raise TypeError
 
 
 ''' convert Dict to Bytes. (Endode)
