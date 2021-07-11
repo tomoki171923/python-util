@@ -3,6 +3,7 @@ import unittest
 from convert import strToDict, strToList, strToListByKey, dictToBytes, bytesToDict, strToDatetime, strToDate, jsonDecoder, jsonEncoder
 from datetime import datetime, date, timedelta, timezone
 import json
+from decimal import Decimal
 
 
 class UtConvert(unittest.TestCase):
@@ -107,6 +108,15 @@ class UtConvert(unittest.TestCase):
 
     def test_jsonEncoder_case2(self):
         ut_arg: dict = {'bar': ['baz', None, 1.0, 2]}
+        expected_result: str = '{"bar": ["baz", null, 1.0, 2]}'
+        result = jsonEncoder(ut_arg)
+        # type test
+        self.assertIs(type(result), str)
+        # value test
+        self.assertEqual(expected_result, result)
+
+    def test_jsonEncoder_case3(self):
+        ut_arg: dict = {'bar': ['baz', None, Decimal(1.0), 2]}
         expected_result: str = '{"bar": ["baz", null, 1.0, 2]}'
         result = jsonEncoder(ut_arg)
         # type test
