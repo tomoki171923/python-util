@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-''' How to use and import this class.
+""" How to use and import this class.
 e.g.
 ~~~
 from base import const as cst
@@ -10,7 +10,7 @@ class myconst:
     cst.REGION = 'ap-northeast-1'
     ...
 ~~~
-'''
+"""
 
 
 import sys

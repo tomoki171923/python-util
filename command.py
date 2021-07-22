@@ -11,7 +11,7 @@ import inspect
 from .base_enum import BaseEnum
 
 
-''' execute a command.
+""" execute a command.
 Args:
     cmd (str): the command executing.
     output (bool): whether this command outputs or not
@@ -20,38 +20,47 @@ Args:
         CONTINUE: continue the processing.
 Returns:
     subprocess.CompletedProcess: the result of executing command.
-'''
-def execCmd(cmd: str, output:bool=True, error_option=BaseEnum.STOP) -> subprocess.CompletedProcess:
+"""
+
+
+def execCmd(
+    cmd: str, output: bool = True, error_option=BaseEnum.STOP
+) -> subprocess.CompletedProcess:
     try:
-        if output is True: print(f' **************** {cmd} **************** ') 
-        result = subprocess.run(
-            cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
+        if output is True:
+            print(f" **************** {cmd} **************** ")
+        result = subprocess.run(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
         if result.returncode == 0:
             # command succeeded
-            if output is True: __output(result, 'green') 
+            if output is True:
+                __output(result, "green")
             return result
         else:
             # command failed
             if error_option == BaseEnum.STOP:
                 # stop
-                if output is True: __output(result, 'red') 
-                raise Exception('ERROR happened. Stop this process.')
+                if output is True:
+                    __output(result, "red")
+                raise Exception("ERROR happened. Stop this process.")
             elif error_option == BaseEnum.CONTINUE:
                 # continue
-                if output is True: __output(result, 'yellow') 
+                if output is True:
+                    __output(result, "yellow")
                 return result
     except Exception as e:
-        print(termcolor.colored(f"{e}", 'red'))
-        print(termcolor.colored(f"Caller : ", 'red'))
+        print(termcolor.colored(f"{e}", "red"))
+        print(termcolor.colored(f"Caller : ", "red"))
         for stack in inspect.stack():
-            print(termcolor.colored(
-                f"{stack.filename},{stack.function},{stack.lineno}", 'red'))
-        print(termcolor.colored(
-            f"Stacktrace : {traceback.format_exc()}", 'red'))
+            print(
+                termcolor.colored(
+                    f"{stack.filename},{stack.function},{stack.lineno}", "red"
+                )
+            )
+        print(termcolor.colored(f"Stacktrace : {traceback.format_exc()}", "red"))
         sys.exit()
 
 
-def __output(result:subprocess.CompletedProcess, color:str) -> None:
+def __output(result: subprocess.CompletedProcess, color: str) -> None:
     print(termcolor.colored(result.returncode, color))
     print(termcolor.colored(result.stdout, color))
     print(termcolor.colored(result.stderr, color))

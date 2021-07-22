@@ -4,24 +4,29 @@ from __future__ import annotations
 import subprocess
 from subprocess import PIPE
 import termcolor
+import sys
 
 UT_LIST: list[str] = [
-    'convert',
-    'extract',
-    'round',
-    'split',
-    'datetime_jp',
+    "convert",
+    "datetime_jp",
+    "extract",
+    "round",
+    "sort",
+    "split",
 ]
 
 # execute all unit test
 if __name__ == "__main__":
     for ut in UT_LIST:
-        print(f'************ Unit Test {ut}.py ************')
-        cmd = f'python ut_{ut}.py'
-        result = subprocess.run(
-            cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
+        print(f"************ Unit Test {ut}.py ************")
+        cmd = f"python ut_{ut}.py"
+        result = subprocess.run(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
         message = result.stderr
-        color: str = 'green'
-        if 'FAILED' in message or 'ERROR' in message:
-            color = 'red'
-        print(termcolor.colored(message, color))
+        error_keyword = ("FAILED", "ERROR", "Error")
+        if any(x in message for x in error_keyword):
+            # failed
+            print(termcolor.colored(message, "red"))
+            sys.exit(1)
+        else:
+            # ok
+            print(termcolor.colored(message, "green"))

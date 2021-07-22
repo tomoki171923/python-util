@@ -77,7 +77,6 @@ class UtRound(unittest.TestCase):
         # value test
         self.assertEqual(expected_result, result)
 
-
     def test_roundDown1_case1(self):
         ut_arg: float = 123.456
         expected_result: int = 123
@@ -134,13 +133,13 @@ class UtRound(unittest.TestCase):
 
     def test_args(self):
         with self.assertRaises(decimal.InvalidOperation):
-            roundUp1('string')
+            roundUp1("string")
         with self.assertRaises(decimal.InvalidOperation):
-            roundUp10('string')
+            roundUp10("string")
         with self.assertRaises(decimal.InvalidOperation):
-            roundDown1('string')
+            roundDown1("string")
         with self.assertRaises(decimal.InvalidOperation):
-            roundDown10('string')
+            roundDown10("string")
 
 
 if __name__ == "__main__":
