@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone, date
 
 """ Get the current time in Japanese timezone.
 Returns:
-    datetime: the current time 
+    datetime: the current time
 """
 
 

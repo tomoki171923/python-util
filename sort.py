@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from typing import Generator
-from .base_enum import BaseEnum  # "." is required on AWS Lambda Layer.
 from typing import List
+from base_enum import BaseEnum  # "." is required on AWS Lambda Layer.
+
 
 """ sort a list contains dict objects.
 Args:
-    l (list): the target list.
+    li (list): the target list.
     n (int): the number to split.
     order (int, optional): order type.
 Returns:
@@ -19,15 +19,15 @@ e.g.
 """
 
 
-def sortDict(l: List[dict], sort_key: str, order: int = BaseEnum.DESC) -> List[dict]:
-    if type(l) is not list:
-        raise TypeError("l is invalid type.")
+def sortDict(li: List[dict], sort_key: str, order: int = BaseEnum.DESC) -> List[dict]:
+    if type(li) is not list:
+        raise TypeError("li is invalid type.")
     reverse: bool
     if order is BaseEnum.DESC:
         reverse = True
     elif order is BaseEnum.ASC:
         reverse = False
-    sorted_list = sorted(l, key=lambda x: x[sort_key], reverse=reverse)
+    sorted_list = sorted(li, key=lambda x: x[sort_key], reverse=reverse)
     return sorted_list
 
 

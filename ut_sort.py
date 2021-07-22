@@ -1,7 +1,7 @@
 import unittest
 
 from sort import sortDict, ranking
-from .base_enum import BaseEnum
+from base_enum import BaseEnum
 
 
 class UtSort(unittest.TestCase):

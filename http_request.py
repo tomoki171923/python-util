@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import json
 import urllib.request
 import base64
@@ -14,7 +13,7 @@ Returns:
 e.g.1
     from base.http_request import requestGet
     requestGet('https://google.com')
-e.g.2 (in case of basic authentication) 
+e.g.2 (in case of basic authentication)
     from base.http_request import requestGet
     url = 'https://example.com/admin'
     user = 'admin'

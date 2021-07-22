@@ -2,6 +2,7 @@
 import json
 import yaml
 import gzip
+import io
 import ast
 from .base_enum import BaseEnum
 
@@ -22,7 +23,7 @@ def loadYaml(file_path: str):
 Args:
     file_path (str): target file path.
     return_type (int, optional): the type of return object
-         BaseEnum.TYPE_DICT  (defalt): dict  
+         BaseEnum.TYPE_DICT  (defalt): dict
          BaseEnum.TYPE_STRING    2: str
 Returns:
     dict or str: file data

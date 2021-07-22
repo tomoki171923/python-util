@@ -113,7 +113,7 @@ class UtDatetimeJp(unittest.TestCase):
     def test_changeTimezone(self):
         hawaii = pytz.timezone("US/Hawaii")
         ut_arg: datetime = now()  # tokyo datetime
-        ut_arg2: timezone = hawaii
+        ut_arg2 = hawaii
         expected_result: datetime = datetime.now(tz=hawaii)  # hawaii datetime
         # change timezone to hawaii from tokyo.
         result = changeTimezone(ut_arg, ut_arg2)
