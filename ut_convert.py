@@ -24,7 +24,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), dict)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_strToDict_case2(self):
         ut_arg: str = '{"key1":"value1", "key2":123}'
@@ -33,7 +33,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), dict)
         # value test
-        self.assertNotEqual(expected_result, result)
+        self.assertNotEqual(result, expected_result)
 
     def test_strToList_case1(self):
         ut_arg: str = '[1, "aaa", 3]'
@@ -42,7 +42,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), list)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_strToList_case2(self):
         ut_arg: str = '[1, "aaa", 3]'
@@ -51,7 +51,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), list)
         # value test
-        self.assertNotEqual(expected_result, result)
+        self.assertNotEqual(result, expected_result)
 
     def test_strToListByKey_case1(self):
         ut_arg: str = "aa bb cc"
@@ -61,7 +61,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), list)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_strToListByKey_case2(self):
         ut_arg: str = "aa,bb,cc"
@@ -71,7 +71,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), list)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_jsonDecoder_case1(self):
         ut_arg: str = '["foo", {"bar":["baz", null, 1.0, 2]}]'
@@ -80,7 +80,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), list)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_jsonDecoder_case2(self):
         ut_arg: str = '{"bar":["baz", null, 1.0, 2]}'
@@ -89,7 +89,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), dict)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_jsonDecoder_case3(self):
         ut_arg: bytes = b'["foo", {"bar":["baz", null, 1.0, 2]}]'
@@ -98,7 +98,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), list)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_jsonEncoder_case1(self):
         ut_arg: list = ["foo", {"bar": ["baz", None, 1.0, 2]}]
@@ -107,7 +107,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), str)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_jsonEncoder_case2(self):
         ut_arg: dict = {"bar": ["baz", None, 1.0, 2]}
@@ -116,7 +116,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), str)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_jsonEncoder_case3(self):
         ut_arg: dict = {"bar": ["baz", None, Decimal(1.0), 2]}
@@ -125,7 +125,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), str)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_dictToBytes(self):
         ut_arg: dict = {
@@ -138,7 +138,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), bytes)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_bytesToDict(self):
         ut_arg: bytes = b"eyJrZXkxIjogInZhbHVlMSIsICJrZXkyIjogMTIzLCAia2V5MyI6ICJodHRwczovL3d3dy5nb29nbGUuY29tLyJ9"
@@ -151,7 +151,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), dict)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_strToDatetime(self):
         ut_arg: str = "2021-01-01 00:00:00.000000+09:00"
@@ -170,7 +170,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), datetime)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_strToDate(self):
         ut_arg: str = "2021/01/01"
@@ -180,7 +180,7 @@ class UtConvert(unittest.TestCase):
         # type test
         self.assertIs(type(result), date)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_args(self):
         with self.assertRaises(ValueError):

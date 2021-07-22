@@ -16,11 +16,11 @@ class UtSplit(unittest.TestCase):
             self.assertIs(type(result), list)
             # value test
             if i == 1:
-                self.assertEqual(expected_result1, result)
+                self.assertEqual(result, expected_result1)
             elif i == 2:
-                self.assertEqual(expected_result2, result)
+                self.assertEqual(result, expected_result2)
             elif i == 3:
-                self.assertEqual(expected_result3, result)
+                self.assertEqual(result, expected_result3)
             i += 1
 
     def test_args(self):
