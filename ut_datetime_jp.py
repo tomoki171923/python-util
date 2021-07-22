@@ -29,9 +29,9 @@ class UtDatetimeJp(unittest.TestCase):
 
     def test_today(self):
         jst = pytz.timezone("Asia/Tokyo")
-        expected_result: date = datetime.fromtimestamp(
-            time.time(), tz=jst
-        ).today().date()
+        expected_result: date = (
+            datetime.fromtimestamp(time.time(), tz=jst).today().date()
+        )
         result = today()
         # type test
         self.assertIs(type(result), date)

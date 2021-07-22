@@ -1,19 +1,14 @@
 appdirs==1.4.4
-attrs @ file:///tmp/build/80754af9/attrs_1620827162558/work
-black==19.10b0
-certifi==2021.5.30
-click @ file:///tmp/build/80754af9/click_1621604852318/work
-flake8 @ file:///tmp/build/80754af9/flake8_1620776156532/work
-importlib-metadata @ file:///opt/concourse/worker/volumes/live/a634a87c-b5e5-41bd-628d-cd0413666c93/volume/importlib-metadata_1617877368300/work
+black==21.7b0
+click==8.0.1
+flake8==3.9.2
 mccabe==0.6.1
 mypy-extensions==0.4.3
-pathspec==0.7.0
-pycodestyle @ file:///tmp/build/80754af9/pycodestyle_1615748559966/work
-pyflakes @ file:///tmp/build/80754af9/pyflakes_1617200973297/work
-pytz @ file:///tmp/build/80754af9/pytz_1612215392582/work
-regex @ file:///opt/concourse/worker/volumes/live/c73bfd53-e085-413a-680d-329894c9ea99/volume/regex_1625610091594/work
+pathspec==0.9.0
+pycodestyle==2.7.0
+pyflakes==2.3.1
+pytz==2021.1
+PyYAML==5.4.1
+regex==2021.7.6
 termcolor==1.1.0
-toml @ file:///tmp/build/80754af9/toml_1616166611790/work
-typed-ast @ file:///opt/concourse/worker/volumes/live/aeacb77e-3cbc-4636-47b8-620b0c4008b5/volume/typed-ast_1624953685731/work
-typing-extensions @ file:///tmp/build/80754af9/typing_extensions_1624965014186/work
-zipp @ file:///tmp/build/80754af9/zipp_1625570634446/work
+tomli==1.0.4

@@ -18,4 +18,4 @@ def splitList(li: list, n: int) -> Generator[list, None, None]:
     if type(n) is not int:
         raise TypeError("n is invalid type.")
     for idx in range(0, len(li), n):
-        yield li[idx: idx + n]
+        yield li[idx : idx + n]

@@ -1,0 +1,9 @@
+version: '3'
+services:
+  py38:
+    container_name: 'py38'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app

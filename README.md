@@ -7,6 +7,17 @@ This repository has some basic Python functions to be used by a general system.
 Basically, they are to be imported from other sources or to be used as just notes.
 
 
+## unit test
+
+~~~
+(local)
+docker-compose run --rm py38 bash
+
+(container)
+pip install --no-cache-dir -r requirements.txt
+python ut_all.py 
+~~~
+
 ## code format
 
 ~~~
