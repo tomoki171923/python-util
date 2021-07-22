@@ -21,7 +21,7 @@ class UtSort(unittest.TestCase):
         # type test
         self.assertIs(type(result), list)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_sortDict_case2(self):
         ut_arg: list = [
@@ -40,7 +40,7 @@ class UtSort(unittest.TestCase):
         # type test
         self.assertIs(type(result), list)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_ranking_case1(self):
         ut_arg: list = [2, 5, 6, 8, 1, 9, 11]
@@ -50,7 +50,7 @@ class UtSort(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_ranking_case2(self):
         ut_arg: list = [2, 5, 6, 8, 1, 9, 11]
@@ -60,7 +60,7 @@ class UtSort(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_ranking_case3(self):
         ut_arg: list = [2, 5, 6, 8, 1, 9, 11]
@@ -70,7 +70,7 @@ class UtSort(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_args(self):
         pass

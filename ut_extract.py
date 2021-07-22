@@ -11,7 +11,7 @@ class UtExtract(unittest.TestCase):
         # type test
         self.assertIs(type(result), str)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_currentDirName(self):
         ut_arg: str = "/tmp/sample.json"
@@ -20,7 +20,7 @@ class UtExtract(unittest.TestCase):
         # type test
         self.assertIs(type(result), str)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_args(self):
         with self.assertRaises(TypeError):

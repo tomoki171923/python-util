@@ -36,7 +36,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), date)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_isPast_case1(self):
         ut_arg: datetime = now() + timedelta(seconds=-1)
@@ -45,7 +45,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), bool)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_isPast_case2(self):
         ut_arg: date = today() + timedelta(days=-1)
@@ -54,7 +54,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), bool)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_isPast_case3(self):
         ut_arg: datetime = now() + timedelta(seconds=1)
@@ -63,7 +63,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), bool)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_isPast_case4(self):
         ut_arg: date = today() + timedelta(days=1)
@@ -72,7 +72,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), bool)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_isFuture_case1(self):
         ut_arg: datetime = now() + timedelta(seconds=1)
@@ -81,7 +81,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), bool)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_isFuture_case2(self):
         ut_arg: date = today() + timedelta(days=1)
@@ -90,7 +90,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), bool)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_isFuture_case3(self):
         ut_arg: datetime = now() + timedelta(seconds=-1)
@@ -99,7 +99,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), bool)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_isFuture_case4(self):
         ut_arg: date = today() + timedelta(days=-1)
@@ -108,7 +108,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), bool)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_changeTimezone(self):
         hawaii = pytz.timezone("US/Hawaii")
@@ -130,7 +130,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), date)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_pastDate(self):
         ut_arg: date = date(2020, 1, 1)
@@ -140,7 +140,7 @@ class UtDatetimeJp(unittest.TestCase):
         # type test
         self.assertIs(type(result), date)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_args(self):
         with self.assertRaises(TypeError):
