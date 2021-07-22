@@ -94,7 +94,7 @@ e.g.2
 
 
 def jsonEncoder(obj: Any) -> str:
-    return json.dumps(obj, default=__jsonEncoder)
+    return json.dumps(obj, ensure_ascii=False, default=__jsonEncoder)
 
 
 def __jsonEncoder(obj: Any):

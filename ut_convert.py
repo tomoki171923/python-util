@@ -127,6 +127,15 @@ class UtConvert(unittest.TestCase):
         # value test
         self.assertEqual(result, expected_result)
 
+    def test_jsonEncoder_case4(self):
+        ut_arg: dict = {"bar": ["baz", None, "アイウエオ", 2]}
+        expected_result: str = '{"bar": ["baz", null, "アイウエオ", 2]}'
+        result = jsonEncoder(ut_arg)
+        # type test
+        self.assertIs(type(result), str)
+        # value test
+        self.assertEqual(result, expected_result)
+
     def test_dictToBytes(self):
         ut_arg: dict = {
             "key1": "value1",
