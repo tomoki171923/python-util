@@ -9,6 +9,7 @@ import sys
 UT_LIST: list[str] = [
     "convert",
     "datetime_jp",
+    "directory",
     "extract",
     "round",
     # "sort",
