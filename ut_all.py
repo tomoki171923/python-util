@@ -11,7 +11,7 @@ UT_LIST: list[str] = [
     "datetime_jp",
     "extract",
     "round",
-    "sort",
+   # "sort",
     "split",
 ]
 
