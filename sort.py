@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 from typing import List
-from base_enum import BaseEnum  # "." is required on AWS Lambda Layer.
+import os
+if "AWS_LAMBDA_FUNCTION_VERSION" in os.environ:
+    from .base_enum import BaseEnum  # "." is required on AWS Lambda Layer.
+else:
+    from base_enum import BaseEnum
+
 
 
 """ sort a list contains dict objects.
