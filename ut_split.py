@@ -4,7 +4,6 @@ from split import splitList
 
 
 class UtSplit(unittest.TestCase):
-
     def test_splitList(self):
         ut_arg: list = [1, 2, 3, 4, 5, 6, 7]
         ut_arg2: int = 3
@@ -17,18 +16,18 @@ class UtSplit(unittest.TestCase):
             self.assertIs(type(result), list)
             # value test
             if i == 1:
-                self.assertEqual(expected_result1, result)
+                self.assertEqual(result, expected_result1)
             elif i == 2:
-                self.assertEqual(expected_result2, result)
+                self.assertEqual(result, expected_result2)
             elif i == 3:
-                self.assertEqual(expected_result3, result)
+                self.assertEqual(result, expected_result3)
             i += 1
 
     def test_args(self):
         with self.assertRaises(TypeError):
             splitList([1, 2, 3, 4, 5, 6, 7])
         with self.assertRaises(TypeError):
-            result = splitList('[1,2,3,4,5,6,7]', '3')
+            result = splitList("[1,2,3,4,5,6,7]", "3")
             next(result)
 
 

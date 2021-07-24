@@ -30,7 +30,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundUp1_case2(self):
         ut_arg: float = 123.567
@@ -39,7 +39,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundUp10_case1(self):
         ut_arg: float = 1234.56
@@ -48,7 +48,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundUp10_case2(self):
         ut_arg: float = 1235.67
@@ -57,7 +57,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundUp10_case3(self):
         ut_arg: int = 1234
@@ -66,7 +66,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundUp10_case4(self):
         ut_arg: int = 1235
@@ -75,8 +75,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
-
+        self.assertEqual(result, expected_result)
 
     def test_roundDown1_case1(self):
         ut_arg: float = 123.456
@@ -85,7 +84,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundDown1_case2(self):
         ut_arg: float = 123.567
@@ -94,7 +93,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundDown10_case1(self):
         ut_arg: float = 1234.56
@@ -103,7 +102,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundDown10_case2(self):
         ut_arg: float = 1235.67
@@ -112,7 +111,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundDown10_case3(self):
         ut_arg: int = 1234
@@ -121,7 +120,7 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_roundDown10_case4(self):
         ut_arg: int = 1235
@@ -130,17 +129,17 @@ class UtRound(unittest.TestCase):
         # type test
         self.assertIs(type(result), int)
         # value test
-        self.assertEqual(expected_result, result)
+        self.assertEqual(result, expected_result)
 
     def test_args(self):
         with self.assertRaises(decimal.InvalidOperation):
-            roundUp1('string')
+            roundUp1("string")
         with self.assertRaises(decimal.InvalidOperation):
-            roundUp10('string')
+            roundUp10("string")
         with self.assertRaises(decimal.InvalidOperation):
-            roundDown1('string')
+            roundDown1("string")
         with self.assertRaises(decimal.InvalidOperation):
-            roundDown10('string')
+            roundDown10("string")
 
 
 if __name__ == "__main__":
