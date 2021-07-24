@@ -12,7 +12,7 @@ UT_LIST: list[str] = [
     "directory",
     "extract",
     "round",
-    # "sort",
+    "sort",
     "split",
 ]
 
