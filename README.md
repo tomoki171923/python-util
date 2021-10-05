@@ -1,10 +1,9 @@
 # python-util
 
-各システムで汎用的に使用するPythonのベーシックな機能郡を格納.
-基本的に本ソースコードは他からimportされること、もしくはただのメモ用として使用.
+python版utility codeを格納.
+基本的に他ソースコードからimportされること、もしくはただのメモ用として使用している.
 
-This repository has some basic Python functions to be used by a general system.
-Basically, they are to be imported from other sources or to be used as just notes.
+This repository has a python utility code. Essentially, they are be imported from other sources.
 
 
 ## unit test
