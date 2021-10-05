@@ -12,16 +12,16 @@ class UtSort(unittest.TestCase):
             {"name": "sato", "score": 100},
         ]
         ut_arg2: str = "score"
-        expected_result: list = [
+        expected: list = [
             {"name": "sato", "score": 100},
             {"name": "suzuki", "score": 80},
             {"name": "tanaka", "score": 30},
         ]
-        result = sortDict(ut_arg, ut_arg2)
+        actual = sortDict(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_sortDict_case2(self):
         ut_arg: list = [
@@ -31,46 +31,46 @@ class UtSort(unittest.TestCase):
         ]
         ut_arg2: str = "score"
         ut_arg3: str = BaseEnum.ASC
-        expected_result: list = [
+        expected: list = [
             {"name": "tanaka", "score": 30},
             {"name": "suzuki", "score": 80},
             {"name": "sato", "score": 100},
         ]
-        result = sortDict(ut_arg, ut_arg2, ut_arg3)
+        actual = sortDict(ut_arg, ut_arg2, ut_arg3)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_ranking_case1(self):
         ut_arg: list = [2, 5, 6, 8, 1, 9, 11]
         ut_arg2: int = 15
-        expected_result: int = 1
-        result = ranking(ut_arg, ut_arg2)
+        expected: int = 1
+        actual = ranking(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), int)
+        self.assertIs(type(actual), int)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_ranking_case2(self):
         ut_arg: list = [2, 5, 6, 8, 1, 9, 11]
         ut_arg2: int = 0
-        expected_result: int = 8
-        result = ranking(ut_arg, ut_arg2)
+        expected: int = 8
+        actual = ranking(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), int)
+        self.assertIs(type(actual), int)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_ranking_case3(self):
         ut_arg: list = [2, 5, 6, 8, 1, 9, 11]
         ut_arg2: int = 5
-        expected_result: int = 5
-        result = ranking(ut_arg, ut_arg2)
+        expected: int = 5
+        actual = ranking(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), int)
+        self.assertIs(type(actual), int)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_args(self):
         pass
