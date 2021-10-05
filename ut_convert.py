@@ -19,122 +19,122 @@ from decimal import Decimal
 class UtConvert(unittest.TestCase):
     def test_strToDict_case1(self):
         ut_arg: str = '{"key1":"value1", "key2":123}'
-        expected_result: dict = {"key1": "value1", "key2": 123}
-        result = strToDict(ut_arg)
+        expected: dict = {"key1": "value1", "key2": 123}
+        actual = strToDict(ut_arg)
         # type test
-        self.assertIs(type(result), dict)
+        self.assertIs(type(actual), dict)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_strToDict_case2(self):
         ut_arg: str = '{"key1":"value1", "key2":123}'
-        expected_result: dict = {"key1": "value1", "key2": "123"}
-        result = strToDict(ut_arg)
+        expected: dict = {"key1": "value1", "key2": "123"}
+        actual = strToDict(ut_arg)
         # type test
-        self.assertIs(type(result), dict)
+        self.assertIs(type(actual), dict)
         # value test
-        self.assertNotEqual(result, expected_result)
+        self.assertNotEqual(actual, expected)
 
     def test_strToList_case1(self):
         ut_arg: str = '[1, "aaa", 3]'
-        expected_result: list = [1, "aaa", 3]
-        result = strToList(ut_arg)
+        expected: list = [1, "aaa", 3]
+        actual = strToList(ut_arg)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_strToList_case2(self):
         ut_arg: str = '[1, "aaa", 3]'
-        expected_result: list = [1, "aaa", "3"]
-        result = strToList(ut_arg)
+        expected: list = [1, "aaa", "3"]
+        actual = strToList(ut_arg)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertNotEqual(result, expected_result)
+        self.assertNotEqual(actual, expected)
 
     def test_strToListByKey_case1(self):
         ut_arg: str = "aa bb cc"
         ut_arg2: str = " "
-        expected_result: list = ["aa", "bb", "cc"]
-        result = strToListByKey(ut_arg, ut_arg2)
+        expected: list = ["aa", "bb", "cc"]
+        actual = strToListByKey(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_strToListByKey_case2(self):
         ut_arg: str = "aa,bb,cc"
         ut_arg2: str = ","
-        expected_result: list = ["aa", "bb", "cc"]
-        result = strToListByKey(ut_arg, ut_arg2)
+        expected: list = ["aa", "bb", "cc"]
+        actual = strToListByKey(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_jsonDecoder_case1(self):
         ut_arg: str = '["foo", {"bar":["baz", null, 1.0, 2]}]'
-        expected_result: list = ["foo", {"bar": ["baz", None, 1.0, 2]}]
-        result = jsonDecoder(ut_arg)
+        expected: list = ["foo", {"bar": ["baz", None, 1.0, 2]}]
+        actual = jsonDecoder(ut_arg)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_jsonDecoder_case2(self):
         ut_arg: str = '{"bar":["baz", null, 1.0, 2]}'
-        expected_result: dict = {"bar": ["baz", None, 1.0, 2]}
-        result = jsonDecoder(ut_arg)
+        expected: dict = {"bar": ["baz", None, 1.0, 2]}
+        actual = jsonDecoder(ut_arg)
         # type test
-        self.assertIs(type(result), dict)
+        self.assertIs(type(actual), dict)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_jsonDecoder_case3(self):
         ut_arg: bytes = b'["foo", {"bar":["baz", null, 1.0, 2]}]'
-        expected_result: list = ["foo", {"bar": ["baz", None, 1.0, 2]}]
-        result = jsonDecoder(ut_arg)
+        expected: list = ["foo", {"bar": ["baz", None, 1.0, 2]}]
+        actual = jsonDecoder(ut_arg)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_jsonEncoder_case1(self):
         ut_arg: list = ["foo", {"bar": ["baz", None, 1.0, 2]}]
-        expected_result: str = '["foo", {"bar": ["baz", null, 1.0, 2]}]'
-        result = jsonEncoder(ut_arg)
+        expected: str = '["foo", {"bar": ["baz", null, 1.0, 2]}]'
+        actual = jsonEncoder(ut_arg)
         # type test
-        self.assertIs(type(result), str)
+        self.assertIs(type(actual), str)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_jsonEncoder_case2(self):
         ut_arg: dict = {"bar": ["baz", None, 1.0, 2]}
-        expected_result: str = '{"bar": ["baz", null, 1.0, 2]}'
-        result = jsonEncoder(ut_arg)
+        expected: str = '{"bar": ["baz", null, 1.0, 2]}'
+        actual = jsonEncoder(ut_arg)
         # type test
-        self.assertIs(type(result), str)
+        self.assertIs(type(actual), str)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_jsonEncoder_case3(self):
         ut_arg: dict = {"bar": ["baz", None, Decimal(1.0), 2]}
-        expected_result: str = '{"bar": ["baz", null, 1.0, 2]}'
-        result = jsonEncoder(ut_arg)
+        expected: str = '{"bar": ["baz", null, 1.0, 2]}'
+        actual = jsonEncoder(ut_arg)
         # type test
-        self.assertIs(type(result), str)
+        self.assertIs(type(actual), str)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_jsonEncoder_case4(self):
         ut_arg: dict = {"bar": ["baz", None, "アイウエオ", 2]}
-        expected_result: str = '{"bar": ["baz", null, "アイウエオ", 2]}'
-        result = jsonEncoder(ut_arg)
+        expected: str = '{"bar": ["baz", null, "アイウエオ", 2]}'
+        actual = jsonEncoder(ut_arg)
         # type test
-        self.assertIs(type(result), str)
+        self.assertIs(type(actual), str)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_dictToBytes(self):
         ut_arg: dict = {
@@ -142,30 +142,30 @@ class UtConvert(unittest.TestCase):
             "key2": 123,
             "key3": "https://www.google.com/",
         }
-        expected_result: bytes = b"eyJrZXkxIjogInZhbHVlMSIsICJrZXkyIjogMTIzLCAia2V5MyI6ICJodHRwczovL3d3dy5nb29nbGUuY29tLyJ9"
-        result = dictToBytes(ut_arg)
+        expected: bytes = b"eyJrZXkxIjogInZhbHVlMSIsICJrZXkyIjogMTIzLCAia2V5MyI6ICJodHRwczovL3d3dy5nb29nbGUuY29tLyJ9"
+        actual = dictToBytes(ut_arg)
         # type test
-        self.assertIs(type(result), bytes)
+        self.assertIs(type(actual), bytes)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_bytesToDict(self):
         ut_arg: bytes = b"eyJrZXkxIjogInZhbHVlMSIsICJrZXkyIjogMTIzLCAia2V5MyI6ICJodHRwczovL3d3dy5nb29nbGUuY29tLyJ9"
-        expected_result: dict = {
+        expected: dict = {
             "key1": "value1",
             "key2": 123,
             "key3": "https://www.google.com/",
         }
-        result = bytesToDict(ut_arg)
+        actual = bytesToDict(ut_arg)
         # type test
-        self.assertIs(type(result), dict)
+        self.assertIs(type(actual), dict)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_strToDatetime(self):
         ut_arg: str = "2021-01-01 00:00:00.000000+09:00"
         ut_arg2: str = "%Y-%m-%d %H:%M:%S.%f%z"
-        expected_result: datetime = datetime(
+        expected: datetime = datetime(
             2021,
             1,
             1,
@@ -175,21 +175,21 @@ class UtConvert(unittest.TestCase):
             microsecond=0,
             tzinfo=timezone(timedelta(hours=9)),
         )
-        result = strToDatetime(ut_arg, ut_arg2)
+        actual = strToDatetime(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), datetime)
+        self.assertIs(type(actual), datetime)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_strToDate(self):
         ut_arg: str = "2021/01/01"
         ut_arg2: str = "%Y/%m/%d"
-        expected_result: date = date(2021, 1, 1)
-        result = strToDate(ut_arg, ut_arg2)
+        expected: date = date(2021, 1, 1)
+        actual = strToDate(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), date)
+        self.assertIs(type(actual), date)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_args(self):
         with self.assertRaises(ValueError):
