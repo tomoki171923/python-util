@@ -20,127 +20,125 @@ import pytz
 class UtDatetimeJp(unittest.TestCase):
     def test_now(self):
         jst = pytz.timezone("Asia/Tokyo")
-        expected_result: datetime = datetime.now(tz=jst)
-        result = now()
+        expected: datetime = datetime.now(tz=jst)
+        actual = now()
         # type test
-        self.assertIs(type(result), datetime)
+        self.assertIs(type(actual), datetime)
         # value test (allowed an error of 1 second)
-        self.assertAlmostEqual(expected_result, result, delta=timedelta(seconds=1))
+        self.assertAlmostEqual(expected, actual, delta=timedelta(seconds=1))
 
     def test_today(self):
         jst = pytz.timezone("Asia/Tokyo")
-        expected_result: date = (
-            datetime.fromtimestamp(time.time(), tz=jst).today().date()
-        )
-        result = today()
+        expected: date = datetime.fromtimestamp(time.time(), tz=jst).today().date()
+        actual = today()
         # type test
-        self.assertIs(type(result), date)
+        self.assertIs(type(actual), date)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_isPast_case1(self):
         ut_arg: datetime = now() + timedelta(seconds=-1)
-        expected_result: bool = True
-        result = isPast(ut_arg)
+        expected: bool = True
+        actual = isPast(ut_arg)
         # type test
-        self.assertIs(type(result), bool)
+        self.assertIs(type(actual), bool)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_isPast_case2(self):
         ut_arg: date = today() + timedelta(days=-1)
-        expected_result: bool = True
-        result = isPast(ut_arg)
+        expected: bool = True
+        actual = isPast(ut_arg)
         # type test
-        self.assertIs(type(result), bool)
+        self.assertIs(type(actual), bool)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_isPast_case3(self):
         ut_arg: datetime = now() + timedelta(seconds=1)
-        expected_result: bool = False
-        result = isPast(ut_arg)
+        expected: bool = False
+        actual = isPast(ut_arg)
         # type test
-        self.assertIs(type(result), bool)
+        self.assertIs(type(actual), bool)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_isPast_case4(self):
         ut_arg: date = today() + timedelta(days=1)
-        expected_result: bool = False
-        result = isPast(ut_arg)
+        expected: bool = False
+        actual = isPast(ut_arg)
         # type test
-        self.assertIs(type(result), bool)
+        self.assertIs(type(actual), bool)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_isFuture_case1(self):
         ut_arg: datetime = now() + timedelta(seconds=1)
-        expected_result: bool = True
-        result = isFuture(ut_arg)
+        expected: bool = True
+        actual = isFuture(ut_arg)
         # type test
-        self.assertIs(type(result), bool)
+        self.assertIs(type(actual), bool)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_isFuture_case2(self):
         ut_arg: date = today() + timedelta(days=1)
-        expected_result: bool = True
-        result = isFuture(ut_arg)
+        expected: bool = True
+        actual = isFuture(ut_arg)
         # type test
-        self.assertIs(type(result), bool)
+        self.assertIs(type(actual), bool)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_isFuture_case3(self):
         ut_arg: datetime = now() + timedelta(seconds=-1)
-        expected_result: bool = False
-        result = isFuture(ut_arg)
+        expected: bool = False
+        actual = isFuture(ut_arg)
         # type test
-        self.assertIs(type(result), bool)
+        self.assertIs(type(actual), bool)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_isFuture_case4(self):
         ut_arg: date = today() + timedelta(days=-1)
-        expected_result: bool = False
-        result = isFuture(ut_arg)
+        expected: bool = False
+        actual = isFuture(ut_arg)
         # type test
-        self.assertIs(type(result), bool)
+        self.assertIs(type(actual), bool)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_changeTimezone(self):
         hawaii = pytz.timezone("US/Hawaii")
         ut_arg: datetime = now()  # tokyo datetime
         ut_arg2 = hawaii
-        expected_result: datetime = datetime.now(tz=hawaii)  # hawaii datetime
+        expected: datetime = datetime.now(tz=hawaii)  # hawaii datetime
         # change timezone to hawaii from tokyo.
-        result = changeTimezone(ut_arg, ut_arg2)
+        actual = changeTimezone(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), datetime)
+        self.assertIs(type(actual), datetime)
         # value test (allowed an error of 1 second)
-        self.assertAlmostEqual(expected_result, result, delta=timedelta(seconds=1))
+        self.assertAlmostEqual(expected, actual, delta=timedelta(seconds=1))
 
     def test_futureDate(self):
         ut_arg: date = date(2020, 1, 1)
         ut_arg2: int = 30
-        expected_result: date = date(2020, 1, 31)
-        result = futureDate(ut_arg, ut_arg2)
+        expected: date = date(2020, 1, 31)
+        actual = futureDate(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), date)
+        self.assertIs(type(actual), date)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_pastDate(self):
         ut_arg: date = date(2020, 1, 1)
         ut_arg2: int = 30
-        expected_result: date = date(2019, 12, 2)
-        result = pastDate(ut_arg, ut_arg2)
+        expected: date = date(2019, 12, 2)
+        actual = pastDate(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), date)
+        self.assertIs(type(actual), date)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_args(self):
         with self.assertRaises(TypeError):

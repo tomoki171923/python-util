@@ -12,16 +12,16 @@ class UtSort(unittest.TestCase):
             {"name": "sato", "score": 100},
         ]
         ut_arg2: str = "score"
-        expected_result: list = [
+        expected: list = [
             {"name": "sato", "score": 100},
             {"name": "suzuki", "score": 80},
             {"name": "tanaka", "score": 30},
         ]
-        result = sortDict(ut_arg, ut_arg2)
+        actual = sortDict(ut_arg, ut_arg2)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_sortDict_case2(self):
         ut_arg: list = [
@@ -31,16 +31,16 @@ class UtSort(unittest.TestCase):
         ]
         ut_arg2: str = "score"
         ut_arg3: str = BaseEnum.ASC
-        expected_result: list = [
+        expected: list = [
             {"name": "tanaka", "score": 30},
             {"name": "suzuki", "score": 80},
             {"name": "sato", "score": 100},
         ]
-        result = sortDict(ut_arg, ut_arg2, ut_arg3)
+        actual = sortDict(ut_arg, ut_arg2, ut_arg3)
         # type test
-        self.assertIs(type(result), list)
+        self.assertIs(type(actual), list)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_args(self):
         pass
