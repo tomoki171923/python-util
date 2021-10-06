@@ -1,6 +1,6 @@
 import unittest
 
-from stats import ranking
+from stats import ranking, median
 
 
 class UtSort(unittest.TestCase):
@@ -31,6 +31,24 @@ class UtSort(unittest.TestCase):
         actual = ranking(ut_arg, ut_arg2)
         # type test
         self.assertIs(type(actual), int)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_median_case1(self):
+        ut_arg: list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        expected: int = 5
+        actual = median(ut_arg)
+        # type test
+        self.assertIs(type(actual), int)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_median_case2(self):
+        ut_arg: list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        expected: float = 5.5
+        actual = median(ut_arg)
+        # type test
+        self.assertIs(type(actual), float)
         # value test
         self.assertEqual(actual, expected)
 
