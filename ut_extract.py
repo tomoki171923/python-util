@@ -6,21 +6,21 @@ from extract import extension, currentDirName
 class UtExtract(unittest.TestCase):
     def test_extension(self):
         ut_arg: str = "/tmp/sample.json"
-        expected_result: str = "json"
-        result = extension(ut_arg)
+        expected: str = "json"
+        actual = extension(ut_arg)
         # type test
-        self.assertIs(type(result), str)
+        self.assertIs(type(actual), str)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_currentDirName(self):
         ut_arg: str = "/tmp/sample.json"
-        expected_result: str = "tmp"
-        result = currentDirName(ut_arg)
+        expected: str = "tmp"
+        actual = currentDirName(ut_arg)
         # type test
-        self.assertIs(type(result), str)
+        self.assertIs(type(actual), str)
         # value test
-        self.assertEqual(result, expected_result)
+        self.assertEqual(actual, expected)
 
     def test_args(self):
         with self.assertRaises(TypeError):

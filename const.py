@@ -2,7 +2,7 @@
 """ How to use and import this class.
 e.g.
 ~~~
-from base import const as cst
+import const as cst
 
 class myconst:
     cst.END_POINT_URL_LOCAL = 'http://localhost:8000'
