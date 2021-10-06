@@ -14,6 +14,7 @@ UT_LIST: list[str] = [
     "round",
     "sort",
     "split",
+    "stats",
 ]
 
 # execute all unit test
