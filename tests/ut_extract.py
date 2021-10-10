@@ -27,7 +27,3 @@ class UtExtract(unittest.TestCase):
             extension(123)
         with self.assertRaises(TypeError):
             currentDirName(123)
-
-
-if __name__ == "__main__":
-    unittest.main()

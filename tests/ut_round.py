@@ -140,7 +140,3 @@ class UtRound(unittest.TestCase):
             roundDown1("string")
         with self.assertRaises(decimal.InvalidOperation):
             roundDown10("string")
-
-
-if __name__ == "__main__":
-    unittest.main()
