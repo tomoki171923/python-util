@@ -11,6 +11,7 @@ import inspect
 
 from enum import IntEnum, auto
 
+
 class Enum(IntEnum):
     STOP = auto()
     CONTINUE = auto()
@@ -35,23 +36,12 @@ def execCmd(
         if output is True:
             print(f" **************** {cmd} **************** ")
         result = subprocess.run(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
-        if result.returncode == 0:
-            # command succeeded
-            if output is True:
-                __output(result, "green")
-            return result
-        else:
-            # command failed
-            if error_option == Enum.STOP:
-                # stop
-                if output is True:
-                    __output(result, "red")
-                raise Exception("ERROR happened. Stop this process.")
-            elif error_option == Enum.CONTINUE:
-                # continue
-                if output is True:
-                    __output(result, "yellow")
-                return result
+        kwargs = __makeKwargs(result, error_option)
+        if output is True:
+            __output(kwargs)
+        if not result.returncode == 0 and error_option == Enum.STOP:
+            raise Exception("ERROR happened. Stop this process.")
+        return result
     except Exception as e:
         print(termcolor.colored(f"{e}", "red"))
         for stack in inspect.stack():
@@ -62,6 +52,20 @@ def execCmd(
             )
         print(termcolor.colored(f"Stacktrace : {traceback.format_exc()}", "red"))
         sys.exit()
+
+
+def __makeKwargs(result: subprocess.CompletedProcess, error_option: int) -> dict:
+    kwargs: dict = dict()
+    kwargs["result"] = result
+    if result.returncode == 0:
+        kwargs["color"] = "green"
+    else:
+        # command failed
+        if error_option == Enum.STOP:
+            kwargs["color"] = "red"
+        elif error_option == Enum.CONTINUE:
+            kwargs["color"] = "yellow"
+    return kwargs
 
 
 def __output(result: subprocess.CompletedProcess, color: str) -> None:
