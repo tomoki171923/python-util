@@ -9,7 +9,7 @@ This repository has a python utility code. Essentially, they are be imported fro
 
 ```
 (local)
-docker-compose run --rm py38 bash
+docker-compose run --rm py38 python -m unittest discover -s test -p "ut_*.py"
 
 (container)
 pip install --no-cache-dir -r requirements.txt
