@@ -14,8 +14,7 @@ def _requires_from_file(filename):
 setup(
     name="pyunit",
     version="1.5",
-    packages=find_packages(),
-    author="tomoki1",
+    author="tomoki",
     url="https://github.com/tomoki171923/python-util",
     description="python utility code.",
     long_description=long_description,
@@ -26,7 +25,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.8",
-    install_requires=_requires_from_file("requirements.txt"),
+    # install_requires=_requires_from_file("requirements.txt"),
     packages=find_packages("src"),
     package_dir={"": "src"},
     py_modules=[splitext(basename(path))[0] for path in glob("src/*.py")],

@@ -5,10 +5,16 @@ python 版 utility code を格納.
 
 This repository has a python utility code. Essentially, they are be imported from other sources.
 
+## how to install
+
+```
+pip install git+hhttps://github.com/tomoki171923/python-util
+```
+
 ## unit test
 
 ```
-docker-compose run --rm py38 python -m unittest discover -s test -p "ut_*.py"
+docker-compose run --rm py38 python -m unittest discover -s tests -p "ut_*.py"
 ```
 
 ## code format
