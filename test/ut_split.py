@@ -1,6 +1,6 @@
 import unittest
 
-from split import splitList
+from pyutil.split import splitList
 
 
 class UtSplit(unittest.TestCase):

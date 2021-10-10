@@ -1,6 +1,6 @@
 import unittest
 
-from sort import sortDict, Enum
+from pyutil.sort import sortDict, Enum
 
 
 class UtSort(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from stats import ranking, median
+from pyutil.stats import ranking, median
 
 
 class UtSort(unittest.TestCase):

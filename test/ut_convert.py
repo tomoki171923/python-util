@@ -1,6 +1,6 @@
 import unittest
 
-from convert import (
+from pyutil.convert import (
     strToDict,
     strToList,
     strToListByKey,
@@ -218,7 +218,3 @@ class UtConvert(unittest.TestCase):
             strToDate("2021-1-1")
         with self.assertRaises(TypeError):
             strToDate("2021-1-1", 123)
-
-
-if __name__ == "__main__":
-    unittest.main()
