@@ -1,6 +1,6 @@
 import unittest
 
-from datetime_jp import (
+from src.pyutil.datetime_jp import (
     now,
     today,
     isPast,
