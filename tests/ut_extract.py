@@ -1,6 +1,6 @@
 import unittest
 
-from pyutil.extract import extension, currentDirName
+from src.pyutil.extract import extension, currentDirName
 
 
 class UtExtract(unittest.TestCase):

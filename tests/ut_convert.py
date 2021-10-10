@@ -1,6 +1,6 @@
 import unittest
 
-from pyutil.convert import (
+from src.pyutil.convert import (
     strToDict,
     strToList,
     strToListByKey,

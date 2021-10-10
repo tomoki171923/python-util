@@ -1,6 +1,6 @@
 import unittest
 
-from pyutil.directory import getFilesPath, dirName
+from src.pyutil.directory import getFilesPath, dirName
 import os
 
 
