@@ -13,7 +13,7 @@ def _requires_from_file(filename):
 
 setup(
     name="pyunit",
-    version="1.5",
+    version="1.6",
     author="tomoki",
     url="https://github.com/tomoki171923/python-util",
     description="python utility code.",
