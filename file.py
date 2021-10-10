@@ -4,7 +4,15 @@ import yaml
 import gzip
 import io
 import ast
-from .base_enum import BaseEnum
+from enum import IntEnum, auto
+
+
+class Enum(IntEnum):
+    TYPE_STRING = auto()
+    TYPE_INT = auto()
+    TYPE_LIST = auto()
+    TYPE_DICT = auto()
+
 
 """ Loading a file as yaml format
 Args:
@@ -23,17 +31,17 @@ def loadYaml(file_path: str):
 Args:
     file_path (str): target file path.
     return_type (int, optional): the type of return object
-         BaseEnum.TYPE_DICT  (defalt): dict
-         BaseEnum.TYPE_STRING    2: str
+         Enum.TYPE_DICT  (defalt): dict
+         Enum.TYPE_STRING    2: str
 Returns:
     dict or str: file data
 """
 
 
-def loadJson(file_path: str, return_type: int = BaseEnum.TYPE_DICT):
+def loadJson(file_path: str, return_type: int = Enum.TYPE_DICT):
     with open(file=file_path) as file:
         json_data = json.load(file)
-        if return_type == BaseEnum.TYPE_STRING:
+        if return_type == Enum.TYPE_STRING:
             json_data = json.dumps(json_data, sort_keys=True, indent=2)
         return json_data
 

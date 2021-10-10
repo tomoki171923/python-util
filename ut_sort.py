@@ -1,7 +1,6 @@
 import unittest
 
-from sort import sortDict
-from base_enum import BaseEnum
+from sort import sortDict, Enum
 
 
 class UtSort(unittest.TestCase):
@@ -30,7 +29,7 @@ class UtSort(unittest.TestCase):
             {"name": "sato", "score": 100},
         ]
         ut_arg2: str = "score"
-        ut_arg3: str = BaseEnum.ASC
+        ut_arg3: str = Enum.ASC
         expected: list = [
             {"name": "tanaka", "score": 30},
             {"name": "suzuki", "score": 80},

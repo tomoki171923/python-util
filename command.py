@@ -8,7 +8,12 @@ import termcolor
 import sys
 import traceback
 import inspect
-from .base_enum import BaseEnum
+
+from enum import IntEnum, auto
+
+class Enum(IntEnum):
+    STOP = auto()
+    CONTINUE = auto()
 
 
 """ execute a command.
@@ -24,7 +29,7 @@ Returns:
 
 
 def execCmd(
-    cmd: str, output: bool = True, error_option=BaseEnum.STOP
+    cmd: str, output: bool = True, error_option=Enum.STOP
 ) -> subprocess.CompletedProcess:
     try:
         if output is True:
@@ -37,12 +42,12 @@ def execCmd(
             return result
         else:
             # command failed
-            if error_option == BaseEnum.STOP:
+            if error_option == Enum.STOP:
                 # stop
                 if output is True:
                     __output(result, "red")
                 raise Exception("ERROR happened. Stop this process.")
-            elif error_option == BaseEnum.CONTINUE:
+            elif error_option == Enum.CONTINUE:
                 # continue
                 if output is True:
                     __output(result, "yellow")
