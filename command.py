@@ -34,11 +34,11 @@ def execCmd(
 ) -> subprocess.CompletedProcess:
     try:
         if output is True:
-            print(f" **************** {cmd} **************** ")
+            print(f"**************** [exec command] {cmd} ****************")
         result = subprocess.run(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
         kwargs = __makeKwargs(result, error_option)
         if output is True:
-            __output(kwargs)
+            __output(**kwargs)
         if not result.returncode == 0 and error_option == Enum.STOP:
             raise Exception("ERROR happened. Stop this process.")
         return result
