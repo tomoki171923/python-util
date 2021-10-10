@@ -8,7 +8,22 @@ This repository has a python utility code. Essentially, they are be imported fro
 ## how to install
 
 ```
-pip install git+hhttps://github.com/tomoki171923/python-util
+pip install git+https://github.com/tomoki171923/python-util
+```
+
+## how to use
+
+e.g. sample.py
+
+```
+from pyutil.command import execCmd
+from pyutil.datetime_jp import today, now
+
+cmd = "ls -l"
+execCmd(cmd)
+
+print(today())
+print(now())
 ```
 
 ## unit test
