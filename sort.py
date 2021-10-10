@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from typing import List
-import os
 
-if "AWS_LAMBDA_FUNCTION_VERSION" in os.environ:
-    from .base_enum import BaseEnum  # "." is required on AWS Lambda Layer.
-else:
-    from base_enum import BaseEnum
+from enum import IntEnum, auto
+
+
+class Enum(IntEnum):
+    ASC = auto()
+    DESC = auto()
 
 
 """ sort a list contains dict objects.
@@ -16,21 +17,21 @@ Args:
 Returns:
     list: sorted list.
 e.g.
-    from base_enum import BaseEnum
+    from base_enum import Enum
     l = [{'name': 'suzuki', 'score': 80}, {'name': 'tanaka', 'score': 30}, {'name': 'sato', 'score': 100}],
     sort_key="score",
-    order = BaseEnum.DESC
+    order = Enum.DESC
     # => [{'name': 'sato', 'score': 100}, {'name': 'suzuki', 'score': 80}, {'name': 'tanaka', 'score': 30}]
 """
 
 
-def sortDict(li: List[dict], sort_key: str, order: int = BaseEnum.DESC) -> List[dict]:
+def sortDict(li: List[dict], sort_key: str, order: int = Enum.DESC) -> List[dict]:
     if type(li) is not list:
         raise TypeError("li is invalid type.")
     reverse: bool
-    if order is BaseEnum.DESC:
+    if order is Enum.DESC:
         reverse = True
-    elif order is BaseEnum.ASC:
+    elif order is Enum.ASC:
         reverse = False
     sorted_list = sorted(li, key=lambda x: x[sort_key], reverse=reverse)
     return sorted_list
