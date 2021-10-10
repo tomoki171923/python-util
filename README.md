@@ -8,12 +8,7 @@ This repository has a python utility code. Essentially, they are be imported fro
 ## unit test
 
 ```
-(local)
-docker-compose run --rm py38 bash
-
-(container)
-pip install --no-cache-dir -r requirements.txt
-python ut_all.py
+docker-compose run --rm py38 python ut_all.py
 ```
 
 ## code format
