@@ -3,6 +3,7 @@ from typing import List
 
 from enum import IntEnum, auto
 
+
 class Enum(IntEnum):
     ASC = auto()
     DESC = auto()
