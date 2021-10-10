@@ -7,12 +7,12 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 
-def _requires_from_file(filename):
-    return open(filename).read().splitlines()
+# def _requires_from_file(filename):
+#    return open(filename).read().splitlines()
 
 
 setup(
-    name="pyunit",
+    name="pyutil",
     version="1.6",
     author="tomoki",
     url="https://github.com/tomoki171923/python-util",
