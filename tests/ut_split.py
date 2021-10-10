@@ -29,7 +29,3 @@ class UtSplit(unittest.TestCase):
         with self.assertRaises(TypeError):
             actual = splitList("[1,2,3,4,5,6,7]", "3")
             next(actual)
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -149,7 +149,3 @@ class UtDatetimeJp(unittest.TestCase):
             changeTimezone(datetime.now())
         with self.assertRaises(TypeError):
             changeTimezone(datetime.now(), "US/Hawaii")
-
-
-if __name__ == "__main__":
-    unittest.main()

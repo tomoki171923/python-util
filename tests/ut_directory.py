@@ -53,7 +53,3 @@ class UtDirectory(unittest.TestCase):
         self.assertIs(type(actual), str)
         # value test
         self.assertEqual(actual, expected)
-
-
-if __name__ == "__main__":
-    unittest.main()
