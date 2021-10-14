@@ -8,7 +8,8 @@ with open("README.md", "r") as fh:
 
 setup(
     name="pyutil",
-    version="1.7",
+    version_config=True,
+    setup_requires=["setuptools-git-versioning"],
     author="tomoki",
     url="https://github.com/tomoki171923/python-util",
     description="python utility code.",
