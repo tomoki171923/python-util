@@ -1,9 +1,11 @@
 version: '3'
+
 services:
-  py38:
-    container_name: 'py38'
+  unittest:
+    container_name: 'unittest'
     build:
       context: .
       dockerfile: Dockerfile
+    command: sh -c "pipenv run test"
     volumes:
       - ./:/usr/src/app

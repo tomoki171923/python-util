@@ -29,20 +29,7 @@ print(now())
 ## unit test
 
 ```
-docker-compose run --rm py38 python -m unittest discover -s tests -p "ut_*.py"
-```
-
-## code format
-
-```
-find . -type f -name "*.py" | xargs black
-```
-
-## code lint
-
-```
-flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+docker-compose up unittest
 ```
 
 ## pre-commit
