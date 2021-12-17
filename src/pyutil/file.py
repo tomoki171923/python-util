@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
+# the following is not necessary if Python version is 3.9 or over.
+from __future__ import annotations
 import json
 import yaml
 import gzip
 import io
 import ast
 from enum import IntEnum, auto
+from typing import Generator
 
 
 class Enum(IntEnum):
@@ -22,7 +25,7 @@ Returns:
 """
 
 
-def loadYaml(file_path: str):
+def loadYaml(file_path: str) -> dict:
     with open(file=file_path) as file:
         return yaml.safe_load(file)
 
@@ -38,7 +41,7 @@ Returns:
 """
 
 
-def loadJson(file_path: str, return_type: int = Enum.TYPE_DICT):
+def loadJson(file_path: str, return_type: int = Enum.TYPE_DICT) -> dict | str:
     with open(file=file_path) as file:
         json_data = json.load(file)
         if return_type == Enum.TYPE_STRING:
@@ -64,7 +67,7 @@ e.g.
 """
 
 
-def loadStream(file_path: str):
+def loadStream(file_path: str) -> Generator[str]:
     with open(file=file_path) as file:
         for line in file:
             yield ast.literal_eval(line)
@@ -78,9 +81,35 @@ Returns:
 """
 
 
-def loadGzipData(file_data: bytes):
+def loadGzipData(file_data: bytes) -> str:
     with gzip.open(filename=io.BytesIO(file_data), mode="rt") as file:
         try:
             return file.read()
         except OSError:
             return False
+
+
+""" Creating a file as yaml format.
+Args:
+    file_path (str): target file path.
+    data (list|dict): file data
+"""
+
+
+def createYaml(file_path: str, data: list | dict) -> None:
+    with open(file=file_path, mode="w", encoding="utf-8") as file:
+        yaml.dumps(
+            data, file, encoding="utf-8", default_flow_style=False, allow_unicode=True
+        )
+
+
+""" Creating a file as json format.
+Args:
+    file_path (str): target file path.
+    data (list|dict): file data
+"""
+
+
+def createJson(file_path: str, data: list | dict) -> None:
+    with open(file=file_path, mode="w", encoding="utf-8") as file:
+        json.dumps(data, file, ensure_ascii=False)
