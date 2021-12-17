@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  unittest:
-    container_name: 'unittest'
+  app:
+    container_name: 'app'
     build:
       context: .
       dockerfile: Dockerfile
