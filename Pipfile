@@ -16,4 +16,4 @@ flake8 = ">=3.9.2"
 python_version = "3.8"
 
 [scripts]
-test = 'python -m unittest discover -s tests -p "ut_*.py"'
+test = 'python -m unittest discover -s test -p "ut_*.py"'
