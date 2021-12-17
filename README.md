@@ -5,17 +5,19 @@ python 版 utility code を格納.
 
 This repository has a python utility code. Essentially, they are be imported from other sources.
 
-## how to install
+## For User
+
+### Install
 
 ```
 pip install git+https://github.com/tomoki171923/python-util#egg=pyutil
 ```
 
-## how to use
+### Usage
 
 e.g. sample.py
 
-```
+```python
 from pyutil.command import execCmd
 from pyutil.datetime_jp import today, now
 
@@ -26,17 +28,17 @@ print(today())
 print(now())
 ```
 
-## unit test
+## For Contributor
 
-```
-docker-compose up unittest
-```
+### Pre-Commit
 
-## pre-commit
-
-```
+```bash
 brew install pre-commit
-pre-commit sample-config > .pre-commit-config.yaml
-vi .pre-commit-config.yaml
 pre-commit install
+```
+
+### Unit Test
+
+```bash
+docker-compose up unittest
 ```
