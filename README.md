@@ -9,8 +9,25 @@ This repository has a python utility code. Essentially, they are be imported fro
 
 ### Install
 
-```
+```bash
 pip install git+https://github.com/tomoki171923/python-util#egg=pyutil
+```
+
+OR
+
+Pipfile
+
+```python
+[packages]
+pyutil = {git = "https://github.com/tomoki171923/python-util.git", editable = true, ref = "main"}
+```
+
+OR
+
+requirements.txt
+
+```python
+pyutil @ git+https://github.com/tomoki171923/python-util@main
 ```
 
 ### Usage
@@ -40,5 +57,11 @@ pre-commit install
 ### Unit Test
 
 ```bash
-docker-compose up unittest
+docker-compose up app
+```
+
+### Add Package
+
+```bash
+docker-compose run --rm app pipenv install PACKAGE_NAME
 ```
