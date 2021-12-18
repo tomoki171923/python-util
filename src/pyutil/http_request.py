@@ -23,7 +23,7 @@ e.g.2 (in case of basic authentication)
 """
 
 
-def requestGet(url: str, data=None, headers=None):
+def requestGet(url: str, data=None, headers=None) -> bytes:
     if headers is None and data is None:
         req = urllib.request.Request(url=url, method="GET")
     elif headers is not None and data is None:
@@ -79,7 +79,7 @@ e.g.2
 """
 
 
-def requestPost(url: str, data: dict, headers: dict):
+def requestPost(url: str, data: dict, headers: dict) -> bytes:
     req = urllib.request.Request(
         url=url, data=json.dumps(data).encode(), headers=headers, method="POST"
     )
@@ -87,7 +87,7 @@ def requestPost(url: str, data: dict, headers: dict):
         return res.read()
 
 
-def requestPut(url: str, data: dict, headers: dict):
+def requestPut(url: str, data: dict, headers: dict) -> bytes:
     req = urllib.request.Request(
         url=url, data=json.dumps(data).encode(), headers=headers, method="PUT"
     )
@@ -111,7 +111,7 @@ e.g.
 """
 
 
-def makeBasicAuthHeader(user: str, password: str):
+def makeBasicAuthHeader(user: str, password: str) -> dict:
     base64_user_pasword = base64.b64encode(
         "{}:{}".format(user, password).encode("utf-8")
     )

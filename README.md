@@ -1,9 +1,6 @@
 # python-util
 
-python 版 utility code を格納.
-基本的に他ソースコードから import されること、もしくはただのメモ用として使用している.
-
-This repository has a python utility code. Essentially, they are be imported from other sources.
+Python package. This package has python utility code.
 
 ## For User
 
@@ -54,14 +51,22 @@ brew install pre-commit
 pre-commit install
 ```
 
-### Unit Test
+### Build
 
 ```bash
-docker-compose up app
+docker-compose build
 ```
 
 ### Add Package
 
 ```bash
 docker-compose run --rm app pipenv install PACKAGE_NAME
+```
+
+### Unit Test
+
+All
+
+```bash
+docker-compose up app
 ```
