@@ -98,7 +98,7 @@ Args:
 
 def createYaml(file_path: str, data: list | dict) -> None:
     with open(file=file_path, mode="w", encoding="utf-8") as file:
-        yaml.dumps(
+        yaml.dump(
             data, file, encoding="utf-8", default_flow_style=False, allow_unicode=True
         )
 
@@ -112,4 +112,4 @@ Args:
 
 def createJson(file_path: str, data: list | dict) -> None:
     with open(file=file_path, mode="w", encoding="utf-8") as file:
-        json.dumps(data, file, ensure_ascii=False)
+        json.dump(data, file, ensure_ascii=False)
