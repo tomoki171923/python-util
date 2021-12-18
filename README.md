@@ -57,15 +57,19 @@ pre-commit install
 docker-compose build
 ```
 
-### Add Package
+### Add Python Package
 
 ```bash
 docker-compose run --rm app pipenv install PACKAGE_NAME
 ```
 
-### Unit Test
+### Update Python Packages
 
-All
+```bash
+docker-compose run --rm app pipenv update
+```
+
+### Unit Test
 
 ```bash
 docker-compose up app
