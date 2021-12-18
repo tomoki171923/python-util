@@ -10,9 +10,9 @@ class UtFile(unittest.TestCase):
     def setUpClass(self):
         # testdata
         self.json_file: str = "./test/ut_file.json"
-        self.json_data: dict = {"type": "json", "contents": ["hoge", "huga"]}
+        self.json_data: dict = {"type": "json", "contents": ["hoge", "あいう"]}
         self.yaml_file: str = "./test/ut_file.yaml"
-        self.yaml_data: dict = {"type": "json", "contents": ["hoge", "huga"]}
+        self.yaml_data: dict = {"type": "json", "contents": ["hoge", "あいう"]}
 
     # destructor of unittest class
     @classmethod
