@@ -2,7 +2,7 @@ FROM python:3.8-slim
 
 WORKDIR /usr/src/app
 
-COPY Pipfile ./
+COPY Pipfile* ./
 
 RUN apt-get update \
     && apt-get -y install locales \
