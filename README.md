@@ -1,6 +1,6 @@
 # python-util
 
-Python package. This package has python utility code.
+Python package, which has utility code like files, http-request, convert, datetime, command, and so on.
 
 ## For User
 
