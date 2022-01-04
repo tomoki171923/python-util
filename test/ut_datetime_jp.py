@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest
 
 from src.pyutil.datetime_jp import (
@@ -120,7 +121,7 @@ class UtDatetimeJp(unittest.TestCase):
         # value test (allowed an error of 1 second)
         self.assertAlmostEqual(expected, actual, delta=timedelta(seconds=1))
 
-    def test_futureDate(self):
+    def test_futureDate_case1(self):
         ut_arg: date = date(2020, 1, 1)
         ut_arg2: int = 30
         expected: date = date(2020, 1, 31)
@@ -130,13 +131,47 @@ class UtDatetimeJp(unittest.TestCase):
         # value test
         self.assertEqual(actual, expected)
 
-    def test_pastDate(self):
+    def test_futureDate_case2(self):
+        ut_arg: date = date(2020, 1, 1)
+        ut_arg2: int = 1
+        expected: date = date(2020, 2, 1)
+        actual = futureDate(ut_arg, months=ut_arg2)
+        # type test
+        self.assertIs(type(actual), date)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_futureDate_case3(self):
+        ut_arg: date = date(2020, 1, 1)
+        expected = None
+        actual = futureDate(ut_arg)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_pastDate_case1(self):
         ut_arg: date = date(2020, 1, 1)
         ut_arg2: int = 30
         expected: date = date(2019, 12, 2)
         actual = pastDate(ut_arg, ut_arg2)
         # type test
         self.assertIs(type(actual), date)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_pastDate_case2(self):
+        ut_arg: date = date(2020, 1, 1)
+        ut_arg2: int = 1
+        expected: date = date(2019, 12, 1)
+        actual = pastDate(ut_arg, months=ut_arg2)
+        # type test
+        self.assertIs(type(actual), date)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_pastDate_case3(self):
+        ut_arg: date = date(2020, 1, 1)
+        expected = None
+        actual = futureDate(ut_arg)
         # value test
         self.assertEqual(actual, expected)
 
