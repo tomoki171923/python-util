@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone, date
+from dateutil.relativedelta import relativedelta
 
 
 """ Get the current time in Japanese timezone.
@@ -76,24 +77,40 @@ def changeTimezone(dt: datetime, tz: timezone) -> datetime:
 """ Get future date.
 Args:
     base_date (datetime): the base date.
-    days (int): tha number of days for future.
+    days (int, optional): tha number of days for future.
+    months (int, optional): tha number of months for future.
 Returns:
     datetime.datetime: datetime object
 """
 
 
-def futureDate(base_date: datetime, days: int) -> datetime:
-    return base_date + timedelta(days=days)
+def futureDate(
+    base_date: datetime, days: int = None, months: int = None
+) -> datetime | None:
+    if days is not None:
+        return base_date + timedelta(days=days)
+    elif months is not None:
+        return base_date + relativedelta(months=months)
+    else:
+        print("Invalid arguments. Please specify 'days' or 'months'.")
 
 
 """ Get past date.
 Args:
     base_date (datetime): the base date.
     days (int): tha number of days for past.
+    months (int, optional): tha number of months for past.
 Returns:
     datetime.datetime: datetime object
 """
 
 
-def pastDate(base_date: datetime, days: int) -> datetime:
-    return base_date - timedelta(days=days)
+def pastDate(
+    base_date: datetime, days: int = None, months: int = None
+) -> datetime | None:
+    if days is not None:
+        return base_date - timedelta(days=days)
+    elif months is not None:
+        return base_date - relativedelta(months=months)
+    else:
+        print("Invalid arguments. Please specify 'days' or 'months'.")
