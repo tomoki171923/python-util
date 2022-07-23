@@ -1,10 +1,10 @@
 import unittest
 
-from src.pyutil.sort import sortDict, Enum
+from src.pyutil.sort import sortDicts, Enum
 
 
 class UtSort(unittest.TestCase):
-    def test_sortDict_case1(self):
+    def test_sortDicts_case1(self):
         ut_arg: list = [
             {"name": "suzuki", "score": 80},
             {"name": "tanaka", "score": 30},
@@ -16,13 +16,13 @@ class UtSort(unittest.TestCase):
             {"name": "suzuki", "score": 80},
             {"name": "tanaka", "score": 30},
         ]
-        actual = sortDict(ut_arg, ut_arg2)
+        actual = sortDicts(ut_arg, ut_arg2)
         # type test
         self.assertIs(type(actual), list)
         # value test
         self.assertEqual(actual, expected)
 
-    def test_sortDict_case2(self):
+    def test_sortDicts_case2(self):
         ut_arg: list = [
             {"name": "suzuki", "score": 80},
             {"name": "tanaka", "score": 30},
@@ -35,7 +35,7 @@ class UtSort(unittest.TestCase):
             {"name": "suzuki", "score": 80},
             {"name": "sato", "score": 100},
         ]
-        actual = sortDict(ut_arg, ut_arg2, ut_arg3)
+        actual = sortDicts(ut_arg, ut_arg2, ut_arg3)
         # type test
         self.assertIs(type(actual), list)
         # value test
