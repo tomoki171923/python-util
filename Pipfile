@@ -14,7 +14,7 @@ black = "==21.7b0"
 flake8 = ">=3.9.2"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
 
 [scripts]
 test = 'python -m unittest discover -s test -p "ut_*.py"'
