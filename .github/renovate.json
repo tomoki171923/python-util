@@ -1,0 +1,45 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "branchConcurrentLimit": 10,
+  "extends": [
+    "config:base"
+  ],
+  "ignorePaths": [
+    "Dockerfile*"
+  ],
+  "ignorePresets": [
+    ":prHourlyLimit2"
+  ],
+  "labels": [
+    "renovate"
+  ],
+  "packageRules": [
+    {
+      "addLabels": [
+        "python-version"
+      ],
+      "groupName": "python",
+      "matchPackageNames": [
+        "python"
+      ]
+    },
+    {
+      "addLabels": [
+        "github-actions-version"
+      ],
+      "groupName": "github-actions",
+      "matchPackagePrefixes": [
+        "actions-modules"
+      ]
+    }
+  ],
+  "patch": {
+    "automerge": true
+  },
+  "prConcurrentLimit": 10,
+  "schedule": [
+    "after 1am on saturday",
+    "before 5am on saturday"
+  ],
+  "timezone": "Asia/Tokyo"
+}
