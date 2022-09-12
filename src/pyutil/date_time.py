@@ -77,7 +77,7 @@ class DateTime:
         datetime.datetime: datetime object
     """
 
-    def changeTimezone(dt: datetime, tz: timezone) -> datetime:
+    def changeTimezone(self, dt: datetime, tz: timezone) -> datetime:
         return dt.astimezone(tz)
 
     """ Get future date.
