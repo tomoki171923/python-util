@@ -33,13 +33,14 @@ e.g. sample.py
 
 ```python
 from pyutil.command import execCmd
-from pyutil.datetime_jp import today, now
+from src.pyutil.date_time import DateTime
 
 cmd = "ls -l"
 execCmd(cmd)
 
-print(today())
-print(now())
+date_time:DateTime = DateTime()
+print(date_time.today())
+print(date_time.now())
 ```
 
 ## For Contributor
