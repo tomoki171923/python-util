@@ -103,6 +103,28 @@ def __jsonEncoder(obj: Any):
     raise TypeError
 
 
+""" convert Python Object to Json Line Document.
+Args:
+    obj (Any): python object.
+Returns:
+    str: json line document.
+e.g.
+    obj = [{"message": "foo", "number": 123}, {"message": "bar", "number": 234}, {"message": "baz", "number": 567}]
+        # =>
+{"message": "foo", "number": 123}
+{"message": "bar", "number": 234}
+{"message": "baz", "number": 567}
+"""
+
+
+def jsonlEncoder(obj: Any) -> str:
+    jsonl: str = ""
+    for entry in obj:
+        jsonl += jsonEncoder(entry)
+        jsonl += "\n"
+    return jsonl
+
+
 """ convert Dict to Bytes. (Endode)
 Args:
     obj (dict): the target obj.
