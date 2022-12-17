@@ -10,6 +10,7 @@ from src.pyutil.convert import (
     strToDate,
     jsonDecoder,
     jsonEncoder,
+    jsonlEncoder,
 )
 from datetime import datetime, date, timedelta, timezone
 import json
@@ -131,6 +132,22 @@ class UtConvert(unittest.TestCase):
         ut_arg: dict = {"bar": ["baz", None, "アイウエオ", 2]}
         expected: str = '{"bar": ["baz", null, "アイウエオ", 2]}'
         actual = jsonEncoder(ut_arg)
+        # type test
+        self.assertIs(type(actual), str)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_jsonlEncoder_case1(self):
+        ut_arg: list = [
+            {"message": "foo", "number": 123},
+            {"message": "bar", "number": 234},
+            {"message": "baz", "number": 567},
+        ]
+        expected: str = """{"message": "foo", "number": 123}
+{"message": "bar", "number": 234}
+{"message": "baz", "number": 567}
+"""
+        actual = jsonlEncoder(ut_arg)
         # type test
         self.assertIs(type(actual), str)
         # value test
