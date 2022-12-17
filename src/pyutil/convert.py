@@ -6,8 +6,32 @@ import ast
 from decimal import Decimal
 import base64
 import json
+import gzip
+import io
 from datetime import datetime, date
 from typing import Any
+
+
+""" convert String to Bytes.
+Args:
+    obj (str): the target obj.
+Returns:
+    bytes: the target obj.
+e.g. strToBytes
+    obj = '{"key1":"value1", "key2":123}'
+        # => b'{"key1":"value1", "key2":123}'
+e.g. strToBase64
+    obj = '{"key1":"value1", "key2":123}'
+        # =>b'eyJrZXkxIjoidmFsdWUxIiwgImtleTIiOjEyM30='
+"""
+
+
+def strToBytes(obj: str, encoding="utf-8") -> bytes:
+    return bytes(obj, encoding=encoding)
+
+
+def strToBase64(obj: str, encoding="utf-8") -> bytes:
+    return base64.urlsafe_b64encode(obj.encode(encoding=encoding))
 
 
 """ convert String to Dict.
@@ -55,6 +79,34 @@ e.g.2
 
 def strToListByKey(obj: str, split_key: str) -> list:
     return obj.split(split_key)
+
+
+""" Converting string object to datetime object.
+Args:
+    date_string (str): the time with string object.
+    format (str): time format.
+
+Returns:
+    datetime: datetime object
+"""
+
+
+def strToDatetime(date_string: str, format: str) -> datetime:
+    return datetime.strptime(date_string, format)
+
+
+""" Converting string object to date object.
+Args:
+    date_string (str): the date with string object.
+    format (str): date format.
+
+Returns:
+    datetime.date: date object
+"""
+
+
+def strToDate(date_string: str, format: str) -> date:
+    return strToDatetime(date_string, format).date()
 
 
 """ convert Json Document to Python Object.
@@ -125,7 +177,35 @@ def jsonlEncoder(obj: Any) -> str:
     return jsonl
 
 
-""" convert Dict to Bytes. (Endode)
+""" convert Python Object to Json Line Document.
+Args:
+    obj (Any): python object.
+    json_type (str, optional): json document type. "line": json line document, "document": normal json format. the default is lines.
+    encoding (str, optional): encoding. the default is utf-8.
+Returns:
+    io.BytesIO: BytesIO object.
+e.g.
+    obj = [{"message": "foo", "number": 123}, {"message": "bar", "number": 234}, {"message": "baz", "number": 567}]
+        # => <_io.BytesIO object at 0x7fe65abcce00>
+"""
+
+
+def jsonGzEncoder(obj: Any, json_type="lines", encoding="utf-8") -> io.BytesIO:
+    if json_type == "lines":
+        contents: str = jsonlEncoder(obj)
+    elif json_type == "document":
+        contents: str = jsonEncoder(obj)
+    else:
+        raise TypeError("json_type is invalid type.")
+    bio: io.BytesIO = io.BytesIO()
+    with gzip.GzipFile(fileobj=bio, mode="wb") as fh:
+        with io.TextIOWrapper(fh, encoding=encoding) as wrapper:
+            wrapper.write(contents)
+    bio.seek(0)
+    return bio
+
+
+""" convert Dict to Bytes. (Encode)
 Args:
     obj (dict): the target obj.
 Returns:
@@ -139,10 +219,10 @@ e.g.
 def dictToBytes(obj: dict) -> bytes:
     if type(obj) is not dict:
         raise TypeError("obj is invalid type.")
-    return base64.urlsafe_b64encode(json.dumps(obj).encode())
+    return strToBase64(jsonEncoder(obj))
 
 
-""" convert Bytes to Dict. (Dedode)
+""" convert Bytes to Dict. (Decode)
 Args:
     obj (bytes): the target obj.
 Returns:
@@ -156,32 +236,26 @@ e.g.
 def bytesToDict(obj: bytes) -> dict:
     if type(obj) is not bytes:
         raise TypeError("obj is invalid type.")
-    return strToDict(base64.urlsafe_b64decode(obj).decode())
+    return strToDict(base64ToStr(obj))
 
 
-""" Converting string object to datetime object.
+""" convert Bytes to String.
 Args:
-    date_string (str): the time with string object.
-    format (str): time format.
-
+    obj (bytes): the target obj.
 Returns:
-    datetime: datetime object
+    str: the target obj.
+e.g. bytesToStr
+    obj = b'{"key1":"value1", "key2":123}'
+        # => '{"key1":"value1", "key2":123}'
+e.g. strToBase64
+    obj = b'eyJrZXkxIjoidmFsdWUxIiwgImtleTIiOjEyM30='
+        # => '{"key1":"value1", "key2":123}'
 """
 
 
-def strToDatetime(date_string: str, format: str) -> datetime:
-    return datetime.strptime(date_string, format)
+def bytesToStr(obj: bytes, encoding="utf-8") -> str:
+    return obj.decode(encoding)
 
 
-""" Converting string object to date object.
-Args:
-    date_string (str): the date with string object.
-    format (str): date format.
-
-Returns:
-    datetime.date: date object
-"""
-
-
-def strToDate(date_string: str, format: str) -> date:
-    return strToDatetime(date_string, format).date()
+def base64ToStr(obj: bytes, encoding="utf-8") -> str:
+    return base64.urlsafe_b64decode(obj).decode(encoding=encoding)
