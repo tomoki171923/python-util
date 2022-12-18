@@ -49,7 +49,21 @@ def loadJson(file_path: str, return_type: int = Enum.TYPE_DICT) -> dict | str:
         return json_data
 
 
-""" Loading a streming data file like the following.
+""" Loading a file as gzip format
+Args:
+    file_path (str): target file path.
+    encoding (str, optional): encoding. the default is utf-8.
+Returns:
+    bytes: file data
+"""
+
+
+def loadGzip(file_path: str) -> bytes:
+    with gzip.open(filename=file_path, mode="rb") as file:
+        return file.read()
+
+
+""" Loading a streaming data file like the following.
 -----
 { 'time': yyyy-MM-ddThh:mm:ss, 'message': 'hogehoge', 'status': 200, ...}
 { 'time': yyyy-MM-ddThh:mm:ss, 'message': 'hogehoge', 'status': 200, ...}
@@ -93,13 +107,14 @@ def loadGzipData(file_data: bytes) -> str:
 Args:
     file_path (str): target file path.
     data (list|dict): file data
+    encoding (str, optional): encoding. the default is utf-8.
 """
 
 
-def createYaml(file_path: str, data: list | dict) -> None:
-    with open(file=file_path, mode="w", encoding="utf-8") as file:
+def createYaml(file_path: str, data: list | dict, encoding="utf-8") -> None:
+    with open(file=file_path, mode="w", encoding=encoding) as file:
         yaml.dump(
-            data, file, encoding="utf-8", default_flow_style=False, allow_unicode=True
+            data, file, encoding=encoding, default_flow_style=False, allow_unicode=True
         )
 
 
@@ -107,9 +122,22 @@ def createYaml(file_path: str, data: list | dict) -> None:
 Args:
     file_path (str): target file path.
     data (list|dict): file data
+    encoding (str, optional): encoding. the default is utf-8.
 """
 
 
-def createJson(file_path: str, data: list | dict) -> None:
-    with open(file=file_path, mode="w", encoding="utf-8") as file:
+def createJson(file_path: str, data: list | dict, encoding="utf-8") -> None:
+    with open(file=file_path, mode="w", encoding=encoding) as file:
         json.dump(data, file, ensure_ascii=False)
+
+
+""" Creating a file as gzip format.
+Args:
+    file_path (str): target file path.
+    data (bytes): file data
+"""
+
+
+def createGzip(file_path: str, data: bytes) -> None:
+    with gzip.open(file_path, mode="wb") as file:
+        file.write(data)
