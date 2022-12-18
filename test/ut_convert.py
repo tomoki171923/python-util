@@ -1,23 +1,47 @@
 import unittest
 
 from src.pyutil.convert import (
+    strToBytes,
+    strToBase64,
     strToDict,
     strToList,
     strToListByKey,
-    dictToBytes,
-    bytesToDict,
     strToDatetime,
     strToDate,
+    dictToBytes,
+    bytesToDict,
+    bytesToStr,
+    base64ToStr,
     jsonDecoder,
     jsonEncoder,
     jsonlEncoder,
+    jsonGzEncoder,
 )
 from datetime import datetime, date, timedelta, timezone
 import json
+import io
 from decimal import Decimal
 
 
 class UtConvert(unittest.TestCase):
+    def test_strToBytes_case1(self):
+        ut_arg: str = '{"key1":"value1", "key2":123}'
+        expected: bytes = b'{"key1":"value1", "key2":123}'
+        actual = strToBytes(ut_arg)
+        # type test
+        self.assertIs(type(actual), bytes)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_strToBase64_case1(self):
+        ut_arg: str = '{"key1":"value1", "key2":123}'
+        expected: bytes = b"eyJrZXkxIjoidmFsdWUxIiwgImtleTIiOjEyM30="
+        actual = strToBase64(ut_arg)
+        # type test
+        self.assertIs(type(actual), bytes)
+        # value test
+        self.assertEqual(actual, expected)
+
     def test_strToDict_case1(self):
         ut_arg: str = '{"key1":"value1", "key2":123}'
         expected: dict = {"key1": "value1", "key2": 123}
@@ -71,6 +95,35 @@ class UtConvert(unittest.TestCase):
         actual = strToListByKey(ut_arg, ut_arg2)
         # type test
         self.assertIs(type(actual), list)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_strToDatetime(self):
+        ut_arg: str = "2021-01-01 00:00:00.000000+09:00"
+        ut_arg2: str = "%Y-%m-%d %H:%M:%S.%f%z"
+        expected: datetime = datetime(
+            2021,
+            1,
+            1,
+            hour=0,
+            minute=0,
+            second=0,
+            microsecond=0,
+            tzinfo=timezone(timedelta(hours=9)),
+        )
+        actual = strToDatetime(ut_arg, ut_arg2)
+        # type test
+        self.assertIs(type(actual), datetime)
+        # value test
+        self.assertEqual(actual, expected)
+
+    def test_strToDate(self):
+        ut_arg: str = "2021/01/01"
+        ut_arg2: str = "%Y/%m/%d"
+        expected: date = date(2021, 1, 1)
+        actual = strToDate(ut_arg, ut_arg2)
+        # type test
+        self.assertIs(type(actual), date)
         # value test
         self.assertEqual(actual, expected)
 
@@ -153,6 +206,16 @@ class UtConvert(unittest.TestCase):
         # value test
         self.assertEqual(actual, expected)
 
+    def test_jsonGzEncoder_case1(self):
+        ut_arg: list = [
+            {"message": "foo", "number": 123},
+            {"message": "bar", "number": 234},
+            {"message": "baz", "number": 567},
+        ]
+        actual = jsonGzEncoder(ut_arg)
+        # type test
+        self.assertIs(type(actual), io.BytesIO)
+
     def test_dictToBytes(self):
         ut_arg: dict = {
             "key1": "value1",
@@ -179,32 +242,21 @@ class UtConvert(unittest.TestCase):
         # value test
         self.assertEqual(actual, expected)
 
-    def test_strToDatetime(self):
-        ut_arg: str = "2021-01-01 00:00:00.000000+09:00"
-        ut_arg2: str = "%Y-%m-%d %H:%M:%S.%f%z"
-        expected: datetime = datetime(
-            2021,
-            1,
-            1,
-            hour=0,
-            minute=0,
-            second=0,
-            microsecond=0,
-            tzinfo=timezone(timedelta(hours=9)),
-        )
-        actual = strToDatetime(ut_arg, ut_arg2)
+    def test_bytesToStr(self):
+        ut_arg: bytes = b'{"key1":"value1", "key2":123}'
+        expected: str = '{"key1":"value1", "key2":123}'
+        actual = bytesToStr(ut_arg)
         # type test
-        self.assertIs(type(actual), datetime)
+        self.assertIs(type(actual), str)
         # value test
         self.assertEqual(actual, expected)
 
-    def test_strToDate(self):
-        ut_arg: str = "2021/01/01"
-        ut_arg2: str = "%Y/%m/%d"
-        expected: date = date(2021, 1, 1)
-        actual = strToDate(ut_arg, ut_arg2)
+    def test_base64ToStr(self):
+        ut_arg: bytes = b"eyJrZXkxIjoidmFsdWUxIiwgImtleTIiOjEyM30="
+        expected: str = '{"key1":"value1", "key2":123}'
+        actual = base64ToStr(ut_arg)
         # type test
-        self.assertIs(type(actual), date)
+        self.assertIs(type(actual), str)
         # value test
         self.assertEqual(actual, expected)
 
