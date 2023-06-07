@@ -18,24 +18,13 @@ e.g.2 (in case of basic authentication)
     url = 'https://example.com/admin'
     user = 'admin'
     password = 'password123'
-    headers = getBasicAuthHeader(user, password)
-    requestGet(url, headers)
+    headers = makeBasicAuthHeader(user, password)
+    requestGet(url=url, headers=headers)
 """
 
 
-def requestGet(url: str, data=None, headers=None) -> bytes:
-    if headers is None and data is None:
-        req = urllib.request.Request(url=url, method="GET")
-    elif headers is not None and data is None:
-        req = urllib.request.Request(url=url, headers=headers, method="GET")
-    elif headers is None and data is not None:
-        req = urllib.request.Request(
-            url=url, data=json.dumps(data).encode(), method="GET"
-        )
-    else:
-        req = urllib.request.Request(
-            url=url, headers=headers, mdata=json.dumps(data).encode(), method="GET"
-        )
+def requestGet(url: str, headers={}) -> bytes:
+    req = urllib.request.Request(url, headers=headers, method="GET")
     with urllib.request.urlopen(req) as res:
         return res.read()
 
@@ -112,7 +101,7 @@ e.g.
 
 
 def makeBasicAuthHeader(user: str, password: str) -> dict:
-    base64_user_pasword = base64.b64encode(
+    base64_user_password = base64.b64encode(
         "{}:{}".format(user, password).encode("utf-8")
     )
-    return {"Authorization": "Basic " + base64_user_pasword.decode("utf-8")}
+    return {"Authorization": "Basic " + base64_user_password.decode("utf-8")}
